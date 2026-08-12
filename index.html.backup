@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JX.4RT - Perfil Artístico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #0f0;
+            overflow-y: auto;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Matrix Rain Background */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        /* Glitch Title */
+        .title {
+            font-size: 5rem;
+            font-weight: bold;
+            text-align: center;
+            position: relative;
+            animation: glitch 2s infinite;
+            text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0;
+        }
+
+        .title::before,
+        .title::after {
+            content: 'JX.4RT';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .title::before {
+            animation: glitch-1 0.3s infinite;
+            color: #0ff;
+            z-index: -1;
+        }
+
+        .title::after {
+            animation: glitch-2 0.3s infinite;
+            color: #f0f;
+            z-index: -2;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        @keyframes glitch-1 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+        }
+
+        @keyframes glitch-2 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(3px, -3px); }
+            40% { transform: translate(3px, 3px); }
+            60% { transform: translate(-3px, -3px); }
+            80% { transform: translate(-3px, 3px); }
+        }
+
+        /* Terminal Box */
+        .terminal {
+            background: rgba(0, 20, 0, 0.8);
+            border: 2px solid #0f0;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 30px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0f0;
+        }
+
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #0f0;
+        }
+
+        .terminal-content {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .typing {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3s steps(40) infinite;
+        }
+
+        @keyframes typing {
+            0%, 100% { width: 0; }
+            50%, 90% { width: 100%; }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: #0f0;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Scan Line Effect */
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 50%,
+                rgba(0, 255, 0, 0.02) 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 1000;
+            animation: scan 8s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100%); }
+        }
+
+        /* Floating Elements */
+        .binary {
+            position: absolute;
+            color: #0f0;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            animation: float 10s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* ASCII Gallery Section */
+        .gallery-section {
+            margin-top: 60px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #0f0;
+            border-bottom: 2px solid #0f0;
+            padding-bottom: 10px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .ascii-card {
+            background: rgba(0, 20, 0, 0.9);
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            padding: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .ascii-card:hover {
+            border-color: #0ff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .ascii-art {
+            font-size: 0.7rem;
+            line-height: 1.2;
+            white-space: pre;
+            overflow-x: auto;
+            color: #0f0;
+        }
+
+        .ascii-title {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #0ff;
+            text-align: center;
+        }
+
+        /* ASCII Editor Section */
+        .editor-section {
+            margin-top: 60px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .editor-container {
+            background: rgba(0, 20, 0, 0.9);
+            border: 2px solid #0f0;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0f0;
+        }
+
+        .editor-title {
+            font-size: 1.2rem;
+            color: #0ff;
+        }
+
+        .editor-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            background: transparent;
+            border: 1px solid #0f0;
+            color: #0f0;
+            padding: 8px 16px;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .btn:hover {
+            background: #0f0;
+            color: #000;
+        }
+
+        .btn-primary {
+            background: rgba(0, 255, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: #0f0;
+            color: #000;
+        }
+
+        #ascii-editor {
+            width: 100%;
+            height: 300px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #0f0;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            line-height: 1.2;
+            padding: 15px;
+            resize: vertical;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        #ascii-editor:focus {
+            outline: none;
+            border-color: #0ff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .art-name-input {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #0f0;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            padding: 8px 12px;
+            margin-right: 10px;
+            width: 200px;
+        }
+
+        .art-name-input:focus {
+            outline: none;
+            border-color: #0ff;
+        }
+
+        /* Modal for viewing ASCII */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: rgba(0, 20, 0, 0.95);
+            border: 2px solid #0f0;
+            border-radius: 5px;
+            padding: 30px;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2rem;
+            color: #0f0;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: #f00;
+        }
+
+        .modal-ascii {
+            font-size: 0.8rem;
+            line-height: 1.2;
+            white-space: pre;
+            color: #0f0;
+        }
+
+        /* Portfolio Section */
+        .portfolio-section {
+            margin-top: 60px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .portfolio-card {
+            background: rgba(0, 20, 0, 0.9);
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .portfolio-card:hover::before {
+            left: 100%;
+        }
+
+        .portfolio-card:hover {
+            border-color: #0ff;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+            transform: translateY(-8px);
+        }
+
+        .portfolio-ascii {
+            font-size: 0.6rem;
+            line-height: 1.1;
+            white-space: pre;
+            color: #0f0;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .portfolio-title {
+            font-size: 1.1rem;
+            color: #0ff;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .portfolio-desc {
+            font-size: 0.85rem;
+            color: #0f0;
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+
+        /* Services Section */
+        .services-section {
+            margin-top: 60px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .services-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0, 20, 0, 0.9);
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .services-table th,
+        .services-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+        .services-table th {
+            background: rgba(0, 255, 0, 0.2);
+            color: #0ff;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .services-table tr:hover {
+            background: rgba(0, 255, 0, 0.1);
+        }
+
+        .services-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .price {
+            color: #0ff;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            margin-top: 60px;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 60px;
+        }
+
+        .contact-container {
+            background: rgba(0, 20, 0, 0.9);
+            border: 2px solid #0f0;
+            border-radius: 5px;
+            padding: 30px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: #0ff;
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-label {
+            color: #0ff;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-value {
+            color: #0f0;
+            font-size: 1rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-label {
+            color: #0ff;
+            font-size: 0.9rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #0f0;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            padding: 12px 15px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #0ff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* About Section */
+        .about-section {
+            margin-top: 60px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .about-container {
+            background: rgba(0, 20, 0, 0.9);
+            border: 2px solid #0f0;
+            border-radius: 5px;
+            padding: 30px;
+        }
+
+        .about-text {
+            color: #0f0;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .about-text span {
+            color: #0ff;
+        }
+
+        /* Navigation */
+        .nav-section {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid #0f0;
+            color: #0f0;
+            padding: 10px 20px;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            background: #0f0;
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrix-canvas"></canvas>
+    <div class="scanline"></div>
+    
+    <div class="container">
+        <h1 class="title">JX.4RT</h1>
+        
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-btn"></div>
+                <div class="terminal-btn"></div>
+                <div class="terminal-btn"></div>
+            </div>
+            <div class="terminal-content">
+                <p>> Iniciando sistema...</p>
+                <p>> Carregando perfil artístico...</p>
+                <p>> Artista: <span style="color: #0ff;">JX.4RT</span></p>
+                <p>> Status: <span style="color: #0f0;">ATIVO</span></p>
+                <p>> Criando realidade digital...</p>
+                <p class="typing">> Bem-vindo ao meu universo<span class="cursor"></span></p>
+            </div>
+        </div>
+
+        <!-- ASCII Gallery Section -->
+        <div class="gallery-section">
+            <h2 class="section-title">GALERIA ASCII</h2>
+            <div class="gallery-grid" id="ascii-gallery">
+                <!-- ASCII cards will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- ASCII Editor Section -->
+        <div class="editor-section">
+            <h2 class="section-title">CRIAR NOVA ARTE ASCII</h2>
+            <div class="editor-container">
+                <div class="editor-header">
+                    <span class="editor-title">Editor ASCII</span>
+                    <div class="editor-controls">
+                        <input type="text" id="art-name" class="art-name-input" placeholder="Nome da arte...">
+                        <button class="btn btn-primary" onclick="saveAsciiArt()">Salvar</button>
+                        <button class="btn" onclick="clearEditor()">Limpar</button>
+                    </div>
+                </div>
+                <textarea id="ascii-editor" placeholder="Cole ou digite sua arte ASCII aqui..."></textarea>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-section">
+            <div class="nav-buttons">
+                <a href="#portfolio" class="nav-btn">PORTFÓLIO</a>
+                <a href="#services" class="nav-btn">SERVIÇOS</a>
+                <a href="#about" class="nav-btn">SOBRE</a>
+                <a href="#contact" class="nav-btn">CONTATO</a>
+            </div>
+        </div>
+
+        <!-- Portfolio Section -->
+        <div class="portfolio-section" id="portfolio">
+            <h2 class="section-title">PORTFÓLIO DE TATUAGENS</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <pre class="portfolio-ascii">
+    ╱╲╱╲╱╲╱╲╱╲
+   ╱━━━━━━━━━━╲
+  ╱  TATTOO ART  ╲
+ ╱╲╱╲╱╲╱╲╱╲╱╲╱╲</pre>
+                    <h3 class="portfolio-title">Blackwork</h3>
+                    <p class="portfolio-desc">Estilo minimalista com traços precisos e preto intenso.</p>
+                </div>
+                <div class="portfolio-card">
+                    <pre class="portfolio-ascii">
+   ╭─────────────╮
+   │  ⚡ CYBER   │
+   │   PUNK      │
+   ╰─────────────╯</pre>
+                    <h3 class="portfolio-title">Cyberpunk</h3>
+                    <p class="portfolio-desc">Elementos tecnológicos e futuristas na pele.</p>
+                </div>
+                <div class="portfolio-card">
+                    <pre class="portfolio-ascii">
+    ╭───────╮
+    │ ⚛️  │
+    │GEO    │
+    │METRIC │
+    ╰───────╯</pre>
+                    <h3 class="portfolio-title">Geométrico</h3>
+                    <p class="portfolio-desc">Formas matemáticas precisas e simétricas.</p>
+                </div>
+                <div class="portfolio-card">
+                    <pre class="portfolio-ascii">
+   ╭─────────────╮
+   │  🌸 TRIBAL  │
+   │   MODERN    │
+   ╰─────────────╯</pre>
+                    <h3 class="portfolio-title">Tribal Moderno</h3>
+                    <p class="portfolio-desc">Tradição tribal com contemporaneidade.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <div class="services-section" id="services">
+            <h2 class="section-title">TABELA DE SERVIÇOS</h2>
+            <table class="services-table">
+                <thead>
+                    <tr>
+                        <th>Serviço</th>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Blackwork</td>
+                        <td>Tatuagem em preto, traços precisos</td>
+                        <td class="price">A partir de R$ 300</td>
+                    </tr>
+                    <tr>
+                        <td>Geometria</td>
+                        <td>Formas geométricas e simétricas</td>
+                        <td class="price">A partir de R$ 400</td>
+                    </tr>
+                    <tr>
+                        <td>Cyberpunk</td>
+                        <td>Elementos tecnológicos/futuristas</td>
+                        <td class="price">A partir de R$ 500</td>
+                    </tr>
+                    <tr>
+                        <td>Custom</td>
+                        <td>Design exclusivo personalizado</td>
+                        <td class="price">Sob consulta</td>
+                    </tr>
+                    <tr>
+                        <td>Cover-up</td>
+                        <td>Cobertura de tatuagem antiga</td>
+                        <td class="price">Sob consulta</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- About Section -->
+        <div class="about-section" id="about">
+            <h2 class="section-title">SOBRE O ARTISTA</h2>
+            <div class="about-container">
+                <p class="about-text">
+                    <span>JX.4RT</span> é um artista tatuador que une a tradição da tatuagem com a estética tecnológica. 
+                    Com inclinações para o mundo digital, cria uma ponte entre a arte na pele e a arte digital, 
+                    explorando o cyberpunk, geometria e blackwork com uma visão contemporânea.
+                </p>
+                <br>
+                <p class="about-text">
+                    Cada tatuagem é uma <span>declaração digital</span> gravada na pele, 
+                    onde o analógico encontra o digital em uma fusão única de estilos.
+                </p>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section" id="contact">
+            <h2 class="section-title">CONTATO</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-label">WhatsApp</div>
+                        <div class="contact-value">(00) 00000-0000</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">jx4rt@art.com</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-label">Localização</div>
+                        <div class="contact-value">São Paulo, BR</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📸</div>
+                        <div class="contact-label">Instagram</div>
+                        <div class="contact-value">@jx.4rt</div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <label class="form-label">Nome</label>
+                        <input type="text" class="form-input" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="seu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Mensagem</label>
+                        <textarea class="form-textarea" placeholder="Descreva sua ideia de tatuagem..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="align-self: flex-start;">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for viewing ASCII -->
+    <div class="modal" id="ascii-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h3 id="modal-title" style="color: #0ff; margin-bottom: 20px; text-align: center;"></h3>
+            <pre class="modal-ascii" id="modal-ascii"></pre>
+        </div>
+    </div>
+
+    <script>
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.random() * canvas.height / fontSize;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0f0';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 50);
+
+        // Floating Binary Elements
+        function createBinary() {
+            const binary = document.createElement('div');
+            binary.className = 'binary';
+            binary.textContent = Math.random() > 0.5 ? '1' : '0';
+            binary.style.left = Math.random() * 100 + '%';
+            binary.style.top = Math.random() * 100 + '%';
+            binary.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            document.body.appendChild(binary);
+
+            setTimeout(() => {
+                binary.remove();
+            }, 10000);
+        }
+
+        setInterval(createBinary, 500);
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // ASCII Art Gallery System
+        const STORAGE_KEY = 'jx4rt_ascii_gallery';
+
+        // Sample ASCII Arts
+        const sampleArts = [
+            {
+                name: 'Cyber Skull',
+                art: `     .-""""""""-.
+   .'            '.
+  ;   __          __;
+  |  /  \\        /  |
+  |  |  |        |  |
+  |  \\  \\________/  |
+  |   \\          /  |
+  |    '--------'   |
+  ;                 ;
+   '.             .'
+     '-..........-'`
+            },
+            {
+                name: 'Matrix Code',
+                art: `0101010101010101
+1010101010101010
+0101010101010101
+1010101010101010
+0101010101010101
+1010101010101010
+0101010101010101
+1010101010101010`
+            },
+            {
+                name: 'Retro Computer',
+                art: `   .----------------.
+  / .--. .--. .--. \\
+ | |    | |    | |   |
+ | '--' | '--' | '--' |
+  \\    / '----' \\    /
+   '------------'`
+            }
+        ];
+
+        // Initialize gallery
+        function initGallery() {
+            let savedArts = localStorage.getItem(STORAGE_KEY);
+            
+            if (!savedArts) {
+                // Save sample arts if no saved arts exist
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(sampleArts));
+                savedArts = JSON.stringify(sampleArts);
+            }
+            
+            renderGallery(JSON.parse(savedArts));
+        }
+
+        // Render gallery
+        function renderGallery(arts) {
+            const gallery = document.getElementById('ascii-gallery');
+            gallery.innerHTML = '';
+            
+            arts.forEach((art, index) => {
+                const card = document.createElement('div');
+                card.className = 'ascii-card';
+                card.onclick = () => openModal(art.name, art.art);
+                
+                card.innerHTML = `
+                    <div class="ascii-title">${art.name}</div>
+                    <pre class="ascii-art">${art.art.substring(0, 200)}${art.art.length > 200 ? '...' : ''}</pre>
+                `;
+                
+                gallery.appendChild(card);
+            });
+        }
+
+        // Save ASCII Art
+        function saveAsciiArt() {
+            const editor = document.getElementById('ascii-editor');
+            const nameInput = document.getElementById('art-name');
+            
+            const art = editor.value.trim();
+            const name = nameInput.value.trim() || 'Sem título';
+            
+            if (!art) {
+                alert('Por favor, adicione uma arte ASCII!');
+                return;
+            }
+            
+            let savedArts = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            savedArts.unshift({ name, art });
+            
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(savedArts));
+            renderGallery(savedArts);
+            
+            // Clear editor
+            editor.value = '';
+            nameInput.value = '';
+            
+            alert('Arte ASCII salva com sucesso!');
+        }
+
+        // Clear Editor
+        function clearEditor() {
+            document.getElementById('ascii-editor').value = '';
+            document.getElementById('art-name').value = '';
+        }
+
+        // Open Modal
+        function openModal(name, art) {
+            document.getElementById('modal-title').textContent = name;
+            document.getElementById('modal-ascii').textContent = art;
+            document.getElementById('ascii-modal').classList.add('active');
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById('ascii-modal').classList.remove('active');
+        }
+
+        // Close modal on outside click
+        document.getElementById('ascii-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'ascii-modal') {
+                closeModal();
+            }
+        });
+
+        // Initialize on load
+        window.addEventListener('load', initGallery);
+
+        // Contact Form Submission
+        function submitForm(event) {
+            event.preventDefault();
+            alert('Mensagem enviada com sucesso! Entrarei em contato em breve.');
+            event.target.reset();
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

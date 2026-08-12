@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JX.4RT - Visual Language Through Tattoo</title>
+    <meta name="description" content="JX.4RT develops visual language systems through tattoo. Based in São Paulo, Brazil. Specializing in symbols, composition, and narrative systems on skin.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://jx4rt.com">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="JX.4RT - Visual Language Through Tattoo">
+    <meta property="og:description" content="Developing symbols, composition, and narrative systems on skin.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jx4rt.com">
+    <meta property="og:image" content="https://jx4rt.com/og-image.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JX.4RT - Visual Language Through Tattoo">
+    <meta name="twitter:description" content="Developing symbols, composition, and narrative systems on skin.">
+    <meta name="twitter:image" content="https://jx4rt.com/og-image.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "JX.4RT",
+        "jobTitle": "Tattoo Artist",
+        "description": "Artist developing visual language through tattoo",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "São Paulo",
+            "addressCountry": "Brazil"
+        },
+        "url": "https://jx4rt.com"
+    }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* JX.4RT Identity Colors */
+            --bg-deep: #080808;
+            --bg: #0a0a0a;
+            --bg-light: #141414;
+            --bg-surface: #1a1a1a;
+            
+            /* Text Colors */
+            --text-primary: #f5f5f5;
+            --text-secondary: #a0a0a0;
+            --text-muted: #606060;
+            
+            /* Accent Colors - Technical */
+            --accent-line: #2a2a2a;
+            --accent-grid: #1f1f1f;
+            --accent-label: #404040;
+            
+            /* Semantic */
+            --border: #1a1a1a;
+            --border-light: #252525;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 6rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            letter-spacing: 0.02em;
+            font-size: 14px;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-deep);
+            z-index: 1000;
+            padding: var(--space-sm) var(--space-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .nav-logo {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-md);
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.7rem;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--text-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            font-size: 0.7rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-cta:hover {
+            border-color: var(--text-primary);
+            background: var(--text-primary);
+            color: var(--bg-deep);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: var(--space-md);
+            background: var(--bg-deep);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: left;
+            max-width: 900px;
+        }
+
+        .hero-section-number {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: var(--space-sm);
+        }
+
+        .hero-tagline {
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            line-height: 1.15;
+            margin-bottom: var(--space-md);
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .hero-statement {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-lg);
+            max-width: 500px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: transparent;
+            color: var(--text-primary);
+        }
+
+        .btn:hover {
+            border-color: var(--text-primary);
+        }
+
+        .btn-primary {
+            background: var(--text-primary);
+            color: var(--bg-deep);
+            border-color: var(--text-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--text-secondary);
+            border-color: var(--text-secondary);
+            color: var(--bg-deep);
+        }
+
+        /* Section Styles */
+        section {
+            padding: var(--space-xl) var(--space-md);
+            max-width: 1000px;
+            margin: 0 auto;
+            border-top: 1px solid var(--border);
+        }
+
+        section:first-of-type {
+            border-top: none;
+        }
+
+        .section-number {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: var(--space-sm);
+        }
+
+        .section-header {
+            margin-bottom: var(--space-lg);
+        }
+
+        .section-tagline {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: var(--space-sm);
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 300;
+            margin-bottom: var(--space-sm);
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            max-width: 500px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-sm);
+        }
+
+        .portfolio-item {
+            position: relative;
+            border: 1px solid var(--border);
+            aspect-ratio: 1;
+            background: var(--bg-surface);
+            transition: border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            border-color: var(--text-primary);
+        }
+
+        .portfolio-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-deep);
+            padding: var(--space-sm);
+            border-top: 1px solid var(--border);
+        }
+
+        .portfolio-code {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .portfolio-title {
+            font-size: 0.8rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        .portfolio-meta {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+        }
+
+        /* Process Section */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .process-step {
+            padding: var(--space-sm);
+            border-left: 1px solid var(--border);
+            padding-left: var(--space-sm);
+        }
+
+        .step-number {
+            color: var(--text-muted);
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: var(--space-xs);
+        }
+
+        .step-title {
+            font-size: 0.85rem;
+            margin-bottom: var(--space-xs);
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        .step-desc {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Form Styles */
+        .form-section {
+            background: var(--bg-surface);
+            padding: var(--space-md);
+            border: 1px solid var(--border);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-sm);
+        }
+
+        .form-full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+
+        .form-label {
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            background: var(--bg-deep);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.75rem;
+            font-size: 0.85rem;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--text-primary);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-deep);
+            padding: var(--space-lg) var(--space-md) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .footer-section h4 {
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: var(--space-lg) var(--space-sm);
+            }
+        }
+
+    </style>
+    <script src="config.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <a href="#" class="nav-logo" aria-label="JX.4RT home">JX.4RT</a>
+        <ul class="nav-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+        <a href="#intake" class="nav-cta">Start Project</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+            <p class="hero-section-number" aria-hidden="true">01</p>
+            <p class="hero-tagline">JX.4RT</p>
+            <h1 id="hero-title" class="hero-title">Visual language through tattoo</h1>
+            <p class="hero-statement">Developing symbols, composition, and narrative systems on skin. Tattoo is the medium. Visual language is the universe.</p>
+            <div class="hero-cta">
+                <a href="#intake" class="btn btn-primary">Start Project</a>
+                <a href="#work" class="btn">View Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statement Section -->
+    <section id="statement" aria-labelledby="statement-title">
+        <div class="section-header">
+            <p class="section-number" aria-hidden="true">02</p>
+            <p class="section-tagline">Statement</p>
+            <h2 id="statement-title" class="section-title">Not just a tattoo artist</h2>
+            <p class="section-subtitle">JX.4RT develops visual language systems. Each piece is a composition of symbols, narrative, and structure. The tattoo is the medium. The language is the work.</p>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" aria-labelledby="work-title">
+        <div class="section-header">
+            <p class="section-number" aria-hidden="true">03</p>
+            <p class="section-tagline">Work</p>
+            <h2 id="work-title" class="section-title">Selected Projects</h2>
+            <p class="section-subtitle">Archive of visual language compositions on skin.</p>
+        </div>
+        <div class="portfolio-grid" role="list">
+            <article class="portfolio-item" role="listitem">
+                <div class="portfolio-placeholder">[ Project 001 ]</div>
+                <div class="portfolio-overlay">
+                    <p class="portfolio-code">PRJ-001</p>
+                    <h3 class="portfolio-title">Untitled</h3>
+                    <p class="portfolio-meta">Blackwork • Forearm</p>
+                </div>
+            </article>
+            <article class="portfolio-item" role="listitem">
+                <div class="portfolio-placeholder">[ Project 002 ]</div>
+                <div class="portfolio-overlay">
+                    <p class="portfolio-code">PRJ-002</p>
+                    <h3 class="portfolio-title">Untitled</h3>
+                    <p class="portfolio-meta">Geometric • Back</p>
+                </div>
+            </article>
+            <article class="portfolio-item" role="listitem">
+                <div class="portfolio-placeholder">[ Project 003 ]</div>
+                <div class="portfolio-overlay">
+                    <p class="portfolio-code">PRJ-003</p>
+                    <h3 class="portfolio-title">Untitled</h3>
+                    <p class="portfolio-meta">Dotwork • Arm</p>
+                </div>
+            </article>
+            <article class="portfolio-item" role="listitem">
+                <div class="portfolio-placeholder">[ Project 004 ]</div>
+                <div class="portfolio-overlay">
+                    <p class="portfolio-code">PRJ-004</p>
+                    <h3 class="portfolio-title">Untitled</h3>
+                    <p class="portfolio-meta">Technical • Chest</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Visual Language Section -->
+    <section id="visual-language" aria-labelledby="visual-language-title">
+        <div class="section-header">
+            <p class="section-number" aria-hidden="true">04</p>
+            <p class="section-tagline">Visual Language</p>
+            <h2 id="visual-language-title" class="section-title">Language Elements</h2>
+            <p class="section-subtitle">The vocabulary of the work.</p>
+        </div>
+        <div class="process-steps" role="list">
+            <div class="process-step" role="listitem">
+                <div class="step-number" aria-hidden="true">01</div>
+                <h3 class="step-title">Symbols</h3>
+                <p class="step-desc">Encoded meaning through visual elements</p>
+            </div>
+            <div class="process-step" role="listitem">
+                <div class="step-number" aria-hidden="true">02</div>
+                <h3 class="step-title">Composition</h3>
+                <p class="step-desc">Structural balance and spatial relationships</p>
+            </div>
+            <div class="process-step" role="listitem">
+                <div class="step-number" aria-hidden="true">03</div>
+                <h3 class="step-title">Line</h3>
+                <p class="step-desc">Technical precision and weight</p>
+            </div>
+            <div class="process-step" role="listitem">
+                <div class="step-number" aria-hidden="true">04</div>
+                <h3 class="step-title">Negative Space</h3>
+                <p class="step-desc">Silence as compositional element</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" aria-labelledby="process-title">
+        <div class="section-header">
+            <p class="section-number" aria-hidden="true">06</p>
+            <p class="section-tagline">Process</p>
+            <h2 id="process-title" class="section-title">Development</h2>
+            <p class="section-subtitle">From idea to execution.</p>
+        </div>
+        <div class="process-steps" role="list">
+            <div class="process-step" role="listitem">
+                <div class="step-number" aria-hidden="true">01</div>
+                <h3 class="step-title">Idea</h3>
+                <p class="step-desc">Understanding the concept and intention</p>
+            </div>
+            <div class="process-step" role="listitem">
+                <div class="step-number" aria-hidden="true">02</div>
+                <h3 class="step-title">Briefing</h3>
+                <p class="step-desc">Detailed discussion of scope and expectations</p>
+            </div>
+            <div class="process-step" role="listitem">
+                <div class="step-number" aria-hidden="true">03</div>
+                <h3 class="step-title">Design</h3>
+                <p class="step-desc">Development of visual composition</p>
+            </div>
+            <div class="process-step" role="listitem">
+                <div class="step-number" aria-hidden="true">04</div>
+                <h3 class="step-title">Tattoo</h3>
+                <p class="step-desc">Execution with technical precision</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" aria-labelledby="about-title">
+        <div class="section-header">
+            <p class="section-number" aria-hidden="true">07</p>
+            <p class="section-tagline">About</p>
+            <h2 id="about-title" class="section-title">JX.4RT</h2>
+            <p class="section-subtitle">Artist developing visual language through tattoo.</p>
+        </div>
+        <div class="form-section">
+            <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
+                Based in São Paulo, Brazil. Working at the intersection of tattoo and visual language development.
+            </p>
+            <p style="color: var(--text-secondary); line-height: 1.8;">
+                Each project is a unique composition. No reproductions. Original visual language for each client.
+            </p>
+        </div>
+    </section>
+
+    <!-- Project Intake Section -->
+    <section id="intake" aria-labelledby="intake-title">
+        <div class="section-header">
+            <p class="section-number" aria-hidden="true">08</p>
+            <p class="section-tagline">Project Intake</p>
+            <h2 id="intake-title" class="section-title">Start a Project</h2>
+            <p class="section-subtitle">Begin the development process.</p>
+        </div>
+        <div class="form-section">
+            <form class="form-grid" id="project-intake-form" aria-labelledby="intake-title" novalidate>
+                <div class="form-group form-full">
+                    <label class="form-label" for="name">Name *</label>
+                    <input type="text" class="form-input" id="name" name="name" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="instagram">Instagram</label>
+                    <input type="text" class="form-input" id="instagram" name="instagram">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email *</label>
+                    <input type="email" class="form-input" id="email" name="email" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="city">City</label>
+                    <input type="text" class="form-input" id="city" name="city">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="country">Country</label>
+                    <input type="text" class="form-input" id="country" name="country">
+                </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="projectDescription">What do you want to create? *</label>
+                    <textarea class="form-textarea" id="projectDescription" name="projectDescription" required aria-required="true"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="bodyArea">Body area</label>
+                    <input type="text" class="form-input" id="bodyArea" name="bodyArea">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="size">Approximate size</label>
+                    <input type="text" class="form-input" id="size" name="size">
+                </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="importance">Why is this piece important to you? *</label>
+                    <textarea class="form-textarea" id="importance" name="importance" required aria-required="true"></textarea>
+                </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="meaning">What should this tattoo communicate? *</label>
+                    <textarea class="form-textarea" id="meaning" name="meaning" required aria-required="true"></textarea>
+                </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="authorship">Authorship level</label>
+                    <select class="form-select" id="authorship" name="authorship">
+                        <option value="">Select</option>
+                        <option value="reproduction">I want to reproduce my reference</option>
+                        <option value="adaptations">Open to adaptations</option>
+                        <option value="interpretation">Want artistic interpretation</option>
+                        <option value="development">Develop idea together</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="timeline">When do you intend to tattoo?</label>
+                    <input type="text" class="form-input" id="timeline" name="timeline">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="traveling">Traveling specifically for this project?</label>
+                    <select class="form-select" id="traveling" name="traveling">
+                        <option value="">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="investment">Investment range</label>
+                    <select class="form-select" id="investment" name="investment">
+                        <option value="">Select</option>
+                        <option value="1000-2000">R$1.000–2.000</option>
+                        <option value="2000-4000">R$2.000–4.000</option>
+                        <option value="4000-8000">R$4.000–8.000</option>
+                        <option value="8000-12000">R$8.000–12.000</option>
+                        <option value="12000+">R$12.000+</option>
+                        <option value="reference">No reference yet</option>
+                    </select>
+                </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="whyJx4rt">Why JX.4RT?</label>
+                    <textarea class="form-textarea" id="whyJx4rt" name="whyJx4rt"></textarea>
+                </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="source">How did you discover JX.4RT?</label>
+                    <select class="form-select" id="source" name="source">
+                        <option value="">Select</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="referral">Referral</option>
+                        <option value="research">Research</option>
+                        <option value="returning">Previous client</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group form-full">
+                    <button type="submit" class="btn btn-primary">Submit Project</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>JX.4RT</h4>
+                <p>São Paulo, Brazil</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Instagram: <a href="https://instagram.com/jx.4rt" target="_blank" rel="noopener noreferrer">@jx.4rt</a></p>
+                <p>Email: <a href="mailto:jx4rt@art.com">jx4rt@art.com</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Archive</h4>
+                <p>© 2024 JX.4RT</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="intake.js"></script>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Sticky CTA visibility
+        window.addEventListener('scroll', () => {
+            const stickyCta = document.getElementById('sticky-cta');
+            if (window.scrollY > 500) {
+                stickyCta.classList.add('visible');
+            } else {
+                stickyCta.classList.remove('visible');
+            }
+        });
+
+        // Booking form submission
+        function submitBooking(event) {
+            event.preventDefault();
+            alert('Solicitação de consulta enviada com sucesso! Entrarei em contato via WhatsApp em até 24 horas.');
+            event.target.reset();
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
