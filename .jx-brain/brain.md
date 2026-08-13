@@ -1,173 +1,195 @@
 # JX.4RT BRAIN
 
-> Project Knowledge Base & Evolution System
-> Version: 1.0.0
+> Private Artist Operating System - Knowledge Base Index
+> Version: 2.0.0
 > Last Updated: 2024-08-12
 
 ---
 
-## IDENTITY
+## OVERVIEW
 
-**Project**: JX.4RT - Visual Language Through Tattoo
-**Type**: Personal Artistic Portfolio + Commercial Intelligence System
-**Artist**: JX.4RT
-**Location**: São Paulo, Brazil
-**Philosophy**: Visual language development through tattoo medium
+The JX.4RT Brain is a private strategic knowledge base for the Artist Operating System. It is NOT public documentation.
 
----
+**Purpose**: Transform artistic language into value through strategic infrastructure.
 
-## CORE PRINCIPLES
-
-### Visual Identity
-- **Palette**: Deep black (#080808), white/off-white (#f5f5f5), gray (#a0a0a0)
-- **Elements**: Technical lines, grids, symbols, codes
-- **Typography**: Editorial, archival aesthetic (Helvetica Neue, Arial)
-- **Style**: Brutalism refined, visual system feel
-- **Philosophy**: Materiality, precision, visual silence
-- **Technology**: Through structure, not clichés
-
-### Anti-Patterns (What to Avoid)
-- Generic cyberpunk (neon RGB, cyan RGB, magenta)
-- Gratuitous glitch effects
-- Gamer aesthetic
-- Excess HUD elements
-- SaaS template look
-- Fictitious data (numbers, testimonials, prices)
-- Public pricing (use investment ranges only)
-
-### Business Model
-- Single artist (not marketplace)
-- Lead qualification system
-- Intelligence-based classification
-- No backend required initially (localStorage)
-- Backend-ready architecture for future
+**Public Interface**: Website presents identity, portfolio, process.
+**Private Layer**: Brain contains strategy, intelligence, decisions, learning.
 
 ---
 
-## ARCHITECTURE
+## MODULE STRUCTURE
 
-### File Structure
+```
+.jx-brain/
+│
+├── brain.md              # This file - Index & Overview
+├── identity.md           # Core identity, thesis, visual identity
+├── artistic-language.md  # Language mapping, evolution, signature elements
+├── strategy.md           # Strategic framework, prioritization, revenue strategy
+├── pricing.md            # Private pricing strategy
+├── projects.md           # Project asset model, classifications
+├── clients.md            # Client intelligence, relationship nature
+├── opportunities.md      # Opportunity engine, collaboration strategy
+├── intellectual-property.md # IP asset management
+├── reputation.md         # Reputation indicators, positioning
+├── experiments.md        # Commercial & artistic experiments
+├── learning.md           # Learning loop, knowledge accumulation
+├── decisions.md          # Decision log & rationale
+├── state.md              # Current state & status
+├── patterns.md           # Design patterns & code conventions
+└── mcp-server.js         # MCP server for IDE integration
+```
+
+---
+
+## PUBLIC vs PRIVATE
+
+### PUBLIC (Website, README)
+- Identity
+- Portfolio
+- Process
+- Project Intake form
+- Contact
+
+### PRIVATE (Brain, Admin, MCP)
+- Pricing logic
+- Scoring algorithms
+- Classification rules
+- Client intelligence
+- Opportunity pipeline
+- Revenue metrics
+- Strategic decisions
+- Experiments
+- Learning
+- IP assets
+
+---
+
+## QUICK REFERENCE
+
+### Identity
+- **Thesis**: Private Artist Operating System for developing, positioning, monetizing, expanding artistic language
+- **Goal**: Increase economic value of artistic language progressively
+- **Optimization**: artistic value × economic value × reputation × recurrence × expansion
+
+### Value Matrix
+- Commercial Value (1-10)
+- Artistic Value (1-10)
+- Reputation Value (1-10)
+- Relationship Value (1-10)
+- Expansion Value (1-10)
+
+### Strategic Classifications
+- CASH PROJECT
+- ART PROJECT
+- SIGNATURE PROJECT
+- DESTINATION PROJECT
+- STRATEGIC COLLABORATION
+- IP PROJECT
+- EXPERIMENTAL PROJECT
+
+### Tattoo Categories
+- COMMERCIAL TATTOO
+- AUTHORIAL TATTOO
+- SIGNATURE PROJECT
+- DESTINATION PROJECT
+- LARGE-SCALE PROJECT
+
+### Revenue Layers
+- CASHFLOW (Tattoo, paid projects)
+- BRAND (Portfolio, reputation, positioning)
+- ASSETS (Originals, editions, IP, visual systems)
+- EXPANSION (Collaboration, fashion, editorial, exhibitions, technology)
+
+---
+
+## ROADMAP
+
+### Phase 1: Personal Artist Foundation (IN PROGRESS)
+- [x] Identity definition
+- [x] Visual identity
+- [x] Portfolio structure
+- [x] Project intake form
+- [x] Basic intelligence
+- [x] Admin panel
+- [x] Brain structure
+- [ ] Multi-dimensional scoring
+- [ ] Project asset tracking
+- [ ] Opportunity tracking
+
+### Phase 2: Commercial Validation (NOT STARTED)
+- [ ] Measure leads
+- [ ] Measure conversion
+- [ ] Measure ticket
+- [ ] Identify high-value clients
+- [ ] Identify signature projects
+- [ ] Identify purchase patterns
+
+### Phase 3: Artistic Asset Development (NOT STARTED)
+- [ ] Series
+- [ ] Originals
+- [ ] Prints
+- [ ] Editions
+- [ ] IP
+- [ ] Collections
+
+### Phase 4: Expansion (NOT STARTED)
+- [ ] Collaborations
+- [ ] Fashion
+- [ ] Editorial
+- [ ] Exhibitions
+- [ ] International opportunities
+- [ ] Destination projects
+
+### Phase 5: Systemization (NOT STARTED)
+- [ ] Evaluate studio use
+- [ ] Systematize processes
+- [ ] Document workflows
+
+---
+
+## DECISION CRITERIA
+
+For any opportunity, answer:
+
+- **ART**: What am I creating?
+- **VALUE**: What is the artistic value?
+- **MONEY**: How does this generate revenue?
+- **REPUTATION**: How does this increase positioning?
+- **ASSET**: Can this become an asset?
+- **EXPANSION**: Can this open a new opportunity?
+- **LEARNING**: What did we learn?
+
+---
+
+## ABSOLUTE RULE
+
+Do not transform JX.4RT into short-term maximization machine.
+
+Do not sacrifice:
+- Identity
+- Authorship
+- Quality
+- Exclusivity
+- Reputation
+
+For immediate conversion.
+
+**Goal**: Build an economically strong artistic career without destroying the singularity that makes the art valuable.
+
+---
+
+## FILE STRUCTURE (PUBLIC)
+
 ```
 jx.4rt/
 ├── index.html          # Main page (HTML + CSS)
 ├── config.js           # Centralized configuration
-├── intake.js           # Lead intelligence system
-├── admin.html          # Development dashboard
-├── .jx-brain/          # Project brain (this directory)
-│   ├── brain.md        # Main knowledge base
-│   ├── evolution.md    # Change log & decisions
-│   └── patterns.md     # Design patterns & conventions
+├── intake.js           # Project intake & intelligence
+├── admin.html          # Private admin panel
+├── .jx-brain/          # Private brain (this directory)
 └── README.md           # Public documentation
 ```
-
-### Configuration System
-**File**: `config.js`
-**Object**: `JX_CONFIG`
-
-Contains:
-- Artist information (name, location, contact)
-- Pricing configuration (internal use only)
-- Project intake investment ranges
-- Lead intelligence scoring weights
-- Classification rules
-- Recommended actions per classification
-- System settings (localStorage key, admin route, debug mode)
-
-### Lead Intelligence System
-**File**: `intake.js`
-**Module**: `LeadIntelligence`
-
-Capabilities:
-- Lead scoring (0-100 points)
-- Classification (STANDARD, QUALIFIED, HIGH_VALUE, SIGNATURE)
-- Complexity analysis (low, medium, high)
-- Artistic fit scoring (0-10)
-- Commercial potential scoring (0-10)
-- Local storage persistence
-- Analytics & reporting
-
-### Admin Panel
-**File**: `admin.html`
-**Access**: `/admin.html`
-
-Features:
-- Analytics dashboard
-- Lead listing
-- Detailed lead inspection
-- Lead management (view, delete)
-- Real-time localStorage data
-
----
-
-## NARRATIVE STRUCTURE
-
-The page follows a structured narrative flow:
-
-1. **HERO (01)** - Visual language through tattoo
-2. **STATEMENT (02)** - Not just a tattoo artist
-3. **WORK (03)** - Selected projects archive
-4. **VISUAL LANGUAGE (04)** - Language elements
-5. **PROCESS (06)** - Development process
-6. **ABOUT (07)** - Artist information
-7. **PROJECT INTAKE (08)** - Multi-step qualification form
-8. **FOOTER/ARCHIVE** - Contact and copyright
-
----
-
-## LEAD SCORING LOGIC
-
-### Scoring Factors
-
-| Factor | Weight | Max Points | Criteria |
-|--------|--------|------------|----------|
-| Project Scale | Traveling/Large | 20 | Traveling = 20, Large = 15, Standard = 5 |
-| Investment | Range | 25 | R$12k+ = 25, R$8k-12k = 20, R$4k-8k = 15, R$2k-4k = 10, R$1k-2k = 5 |
-| Authorship | Development level | 20 | Development = 20, Interpretation = 15, Adaptations = 10, Reproduction = 5 |
-| Timeline | Defined/Flexible | 15 | Detailed = 15, Basic = 10, None = 5 |
-| Source | Returning/Referral | 10 | Returning = 10, Referral = 8, Instagram = 5, Research = 3 |
-| Why JX.4RT | Detailed response | 10 | 50+ chars = 10, 20+ chars = 5, Less = 2 |
-
-### Classification Thresholds
-- **SIGNATURE**: 80+ points → Direct contact
-- **HIGH_VALUE**: 60-79 points → Personal proposal
-- **QUALIFIED**: 40-59 points → Manual review
-- **STANDARD**: 0-39 points → Standard quote
-
----
-
-## PROJECT INTAKE FORM
-
-### Fields Collected
-
-**Identity**
-- Name (required)
-- Instagram
-- Email (required)
-- City
-- Country
-
-**Project**
-- Description (required)
-- Body area
-- Approximate size
-- Timeline
-
-**Intention**
-- Why is this piece important to you? (required)
-- What should this tattoo communicate? (required)
-
-**Authorship**
-- Level: reproduction, adaptations, interpretation, development
-
-**Logistics**
-- Traveling specifically for this project?
-
-**Investment**
-- Range: R$1.000–2.000, R$2.000–4.000, R$4.000–8.000, R$8.000–12.000, R$12.000+, No reference yet
-
-**Acquisition**
-- Why JX.4RT?
-- Source: Instagram, Referral, Research, Returning, Other
 
 ---
 
@@ -200,64 +222,6 @@ The page follows a structured narrative flow:
 
 ---
 
-## DESIGN PATTERNS
-
-### Section Pattern
-```html
-<section id="section-id" aria-labelledby="section-title">
-    <div class="section-header">
-        <p class="section-number" aria-hidden="true">XX</p>
-        <p class="section-tagline">TAGLINE</p>
-        <h2 id="section-title" class="section-title">Title</h2>
-        <p class="section-subtitle">Subtitle</p>
-    </div>
-    <!-- Content -->
-</section>
-```
-
-### Form Pattern
-```html
-<div class="form-group">
-    <label class="form-label" for="field-id">Label *</label>
-    <input type="text" class="form-input" id="field-id" name="fieldName" required aria-required="true">
-</div>
-```
-
-### Button Pattern
-```html
-<a href="#target" class="btn btn-primary">Action</a>
-```
-
----
-
-## ACCESSIBILITY STANDARDS
-
-- Semantic HTML (section, article, nav, footer)
-- ARIA labels and roles
-- aria-labelledby for sections
-- aria-hidden for decorative elements
-- aria-required for required fields
-- role="navigation" for nav
-- role="list" for grids
-- role="listitem" for items
-- role="contentinfo" for footer
-- Keyboard navigation support
-- Focus states on interactive elements
-
----
-
-## SEO STANDARDS
-
-- Meta description
-- Canonical URL
-- Open Graph tags
-- Twitter Card tags
-- Structured data (Schema.org Person)
-- Semantic heading hierarchy (h1, h2, h3)
-- Alt text for images (when added)
-
----
-
 ## DEVELOPMENT WORKFLOW
 
 ### Local Development
@@ -279,107 +243,66 @@ git push origin main
 2. `index.html` - Content/structure changes
 3. `intake.js` - Logic changes
 4. `admin.html` - Admin panel changes
-5. `.jx-brain/brain.md` - Update knowledge base
-
----
-
-## DECISION LOG
-
-### 2024-08-12 - Initial Architecture
-**Decision**: Single-page application with embedded CSS/JS
-**Reason**: Simplicity, no build step, easy deployment
-**Trade-off**: Harder to scale, but sufficient for single artist
-
-### 2024-08-12 - localStorage for Data
-**Decision**: Use localStorage for lead storage
-**Reason**: No backend required initially, works for development
-**Trade-off**: Data lost on browser clear, not production-ready
-**Future**: Backend API + database for production
-
-### 2024-08-12 - Lead Intelligence System
-**Decision**: Implement scoring and classification
-**Reason**: Qualify leads automatically, prioritize high-value clients
-**Trade-off**: Complexity, but necessary for commercial intelligence
-
-### 2024-08-12 - Visual Identity Refinement
-**Decision**: Remove cyberpunk clichés, adopt refined brutalism
-**Reason**: Align with artistic identity, avoid generic aesthetics
-**Trade-off**: Less "flashy", more sophisticated
-
----
-
-## FUTURE ROADMAP
-
-### Phase 1: Foundation (Completed)
-- [x] Visual identity alignment
-- [x] Narrative structure
-- [x] Project intake form
-- [x] Lead intelligence
-- [x] Admin panel
-- [x] Documentation
-
-### Phase 2: Enhancement (Planned)
-- [ ] Real project images (replace placeholders)
-- [ ] Backend API implementation
-- [ ] Database integration
-- [ ] Email notifications
-- [ ] WhatsApp integration
-- [ ] Payment processing
-
-### Phase 3: Expansion (Future)
-- [ ] Multi-language support
-- [ ] Advanced analytics
-- [ ] CRM integration
-- [ ] Client portal
-- [ ] Project management
-- [ ] Gallery management system
+5. `.jx-brain/*.md` - Update relevant brain module
 
 ---
 
 ## MCP INTEGRATION
 
-The JX.4RT Brain can be accessed via MCP (Model Context Protocol) for IDE integration.
+The JX.4RT Brain is accessible via MCP (Model Context Protocol) for IDE integration.
 
-**MCP Server**: `.jx-brain/mcp-server.js` (to be created)
+**MCP Server**: `.jx-brain/mcp-server.js`
+**Purpose**: Operational interface for Artist OS reasoning
+
 **Resources Available**:
-- Project architecture
-- Design patterns
-- Configuration reference
-- Lead scoring logic
-- Decision history
+- jx4rt-identity
+- jx4rt-artistic-language
+- jx4rt-strategy
+- jx4rt-projects
+- jx4rt-clients
+- jx4rt-pricing
+- jx4rt-opportunities
+- jx4rt-ip
+- jx4rt-reputation
+- jx4rt-learning
+- jx4rt-state
 
 **Tools Available**:
-- Query project knowledge
-- Update configuration
-- Analyze lead data
-- Generate documentation
+- query_brain
+- get_config_value
+- analyze_project
+- classify_opportunity
+- evaluate_artistic_value
+- evaluate_commercial_value
+- evaluate_expansion_potential
+- analyze_client
+- suggest_project_strategy
+- record_decision
+- record_experiment
+- record_result
+- update_learning
+- validate_change
+- generate_documentation
 
 ---
 
 ## LEARNING & EVOLUTION
 
-This brain document evolves with the project. When making changes:
+The brain evolves with the project. When making changes:
 
-1. **Update this file** with new decisions, patterns, or architecture changes
-2. **Document the why** in the Decision Log section
-3. **Update patterns** if new conventions are established
-4. **Version the brain** when major changes occur
+1. **Update relevant module** with new information
+2. **Document decisions** in decisions.md
+3. **Update state** in state.md
+4. **Version modules** when major changes occur
 
 ### Evolution Triggers
-- New features added
+- New strategic direction
 - Architecture changes
-- Design pattern updates
+- Pattern updates
 - Configuration changes
 - Business model changes
+- Learning from experiments
 
 ---
 
-## CONTACT & SUPPORT
-
-**GitHub**: https://github.com/SH1W4/jx.4rt
-**Email**: jx4rt@art.com
-**Instagram**: @jx.4rt
-
----
-
-**End of JX.4RT Brain v1.0.0**
+**End of JX.4RT Brain v2.0.0**
