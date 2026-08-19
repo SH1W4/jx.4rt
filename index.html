@@ -785,118 +785,159 @@
             <h2 id="intake-title" class="section-title">Start a Project</h2>
             <p class="section-subtitle">Tell us about your project. We'll review and respond within 48 hours.</p>
         </div>
-        <form id="intake-form" class="intake-form" name="project-intake" method="POST" data-netlify="true">
-            <!-- STEP 1 -->
+        <form id="intake-form" class="intake-form" name="project-intake" method="POST" data-netlify="true" enctype="multipart/form-data">
+            <!-- STEP 1: Identity & Contact -->
             <div class="form-step active" data-step="1" style="display: contents;">
-                    <div class="form-group form-full">
-                        <label class="form-label" for="name">Name *</label>
-                        <input type="text" class="form-input" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="instagram">Instagram</label>
-                        <input type="text" class="form-input" id="instagram" name="instagram">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="email">Email *</label>
-                        <input type="email" class="form-input" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="city">City</label>
-                        <input type="text" class="form-input" id="city" name="city">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="country">Country</label>
-                        <input type="text" class="form-input" id="country" name="country">
-                    </div>
-                    <div class="form-group form-full">
-                        <label class="form-label" for="projectDescription">What do you want to create? *</label>
-                        <textarea class="form-textarea" id="projectDescription" name="projectDescription" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="bodyArea">Body area</label>
-                        <input type="text" class="form-input" id="bodyArea" name="bodyArea">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="size">Approximate size</label>
-                        <input type="text" class="form-input" id="size" name="size">
-                    </div>
-                    <div class="form-group form-full" style="margin-top: 1rem;">
-                        <button type="button" class="btn btn-primary btn-next">Next Step ></button>
-                    </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="name">Name *</label>
+                    <input type="text" class="form-input" id="name" name="name" required>
                 </div>
+                <div class="form-group">
+                    <label class="form-label" for="birthdate">Date of Birth *</label>
+                    <input type="date" class="form-input" id="birthdate" name="birthdate" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="city">City *</label>
+                    <input type="text" class="form-input" id="city" name="city" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="whatsapp">WhatsApp *</label>
+                    <input type="tel" class="form-input" id="whatsapp" name="whatsapp" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="instagram">Instagram</label>
+                    <input type="text" class="form-input" id="instagram" name="instagram">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email *</label>
+                    <input type="email" class="form-input" id="email" name="email" required>
+                </div>
+                <div class="form-group form-full" style="margin-top: 1rem;">
+                    <button type="button" class="btn btn-primary btn-next">Next Step ></button>
+                </div>
+            </div>
 
-                <!-- STEP 2 -->
-                <div class="form-step" data-step="2" style="display: none;">
-                    <div class="form-group form-full">
-                        <label class="form-label" for="importance">Why is this piece important to you? *</label>
-                        <textarea class="form-textarea" id="importance" name="importance" required></textarea>
-                    </div>
-                    <div class="form-group form-full">
-                        <label class="form-label" for="meaning">What should this tattoo communicate? *</label>
-                        <textarea class="form-textarea" id="meaning" name="meaning" required></textarea>
-                    </div>
-                    <div class="form-group form-full">
-                        <label class="form-label" for="authorship">Authorship level</label>
-                        <select class="form-select" id="authorship" name="authorship">
-                            <option value="">Select</option>
-                            <option value="reproduction">I want to reproduce my reference</option>
-                            <option value="adaptations">Open to adaptations</option>
-                            <option value="interpretation">Want artistic interpretation</option>
-                            <option value="development">Develop idea together</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="timeline">When do you intend to tattoo?</label>
-                        <input type="text" class="form-input" id="timeline" name="timeline">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="traveling">Traveling specifically for this project?</label>
-                        <select class="form-select" id="traveling" name="traveling">
-                            <option value="">Select</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                    <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
-                        <button type="button" class="btn btn-prev">< Prev</button>
-                        <button type="button" class="btn btn-primary btn-next">Next Step ></button>
-                    </div>
+            <!-- STEP 2: Project Details -->
+            <div class="form-step" data-step="2" style="display: none;">
+                <div class="form-group form-full">
+                    <label class="form-label" for="projectDescription">Describe your idea with maximum detail *</label>
+                    <textarea class="form-textarea" id="projectDescription" name="projectDescription" required></textarea>
                 </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="style">Style *</label>
+                    <select class="form-select" id="style" name="style" required>
+                        <option value="">Select</option>
+                        <option value="blackwork">Blackwork</option>
+                        <option value="abstract">Abstract</option>
+                        <option value="blackwork-abstract">Blackwork / Abstract</option>
+                    </select>
+                </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="references">Reference images (optional)</label>
+                    <input type="file" class="form-input" id="references" name="references" multiple accept="image/*">
+                </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="bodyAreaPhoto">Photo of body area *</label>
+                    <input type="file" class="form-input" id="bodyAreaPhoto" name="bodyAreaPhoto" accept="image/*" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="bodyArea">Body area *</label>
+                    <input type="text" class="form-input" id="bodyArea" name="bodyArea" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="size">Approximate size *</label>
+                    <input type="text" class="form-input" id="size" name="size" required>
+                </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="allergies">Do you have any allergies?</label>
+                    <select class="form-select" id="allergies" name="allergies">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="form-group form-full" id="allergiesDetail" style="display: none;">
+                    <label class="form-label" for="allergiesDescription">If yes, which?</label>
+                    <input type="text" class="form-input" id="allergiesDescription" name="allergiesDescription">
+                </div>
+                <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
+                    <button type="button" class="btn btn-prev">< Prev</button>
+                    <button type="button" class="btn btn-primary btn-next">Next Step ></button>
+                </div>
+            </div>
 
-                <!-- STEP 3 -->
-                <div class="form-step" data-step="3" style="display: none;">
-                    <div class="form-group form-full">
-                        <label class="form-label" for="investment">Investment range</label>
-                        <select class="form-select" id="investment" name="investment">
-                            <option value="">Select</option>
-                            <option value="1000-2000">R$1.000–2.000</option>
-                            <option value="2000-4000">R$2.000–4.000</option>
-                            <option value="4000-8000">R$4.000–8.000</option>
-                            <option value="8000-12000">R$8.000–12.000</option>
-                            <option value="12000+">R$12.000+</option>
-                            <option value="reference">No reference yet</option>
-                        </select>
-                    </div>
-                    <div class="form-group form-full">
-                        <label class="form-label" for="whyJx4rt">Why JX.4RT?</label>
-                        <textarea class="form-textarea" id="whyJx4rt" name="whyJx4rt"></textarea>
-                    </div>
-                    <div class="form-group form-full">
-                        <label class="form-label" for="source">How did you discover JX.4RT?</label>
-                        <select class="form-select" id="source" name="source">
-                            <option value="">Select</option>
-                            <option value="instagram">Instagram</option>
-                            <option value="referral">Referral</option>
-                            <option value="research">Research</option>
-                            <option value="returning">Previous client</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
-                        <button type="button" class="btn btn-prev">< Prev</button>
-                        <button type="submit" class="btn btn-primary" id="btn-submit">Submit Project</button>
-                    </div>
+            <!-- STEP 3: Intention -->
+            <div class="form-step" data-step="3" style="display: none;">
+                <div class="form-group form-full">
+                    <label class="form-label" for="importance">Why is this piece important to you? *</label>
+                    <textarea class="form-textarea" id="importance" name="importance" required></textarea>
                 </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="meaning">What should this tattoo communicate? *</label>
+                    <textarea class="form-textarea" id="meaning" name="meaning" required></textarea>
+                </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="authorship">Authorship level</label>
+                    <select class="form-select" id="authorship" name="authorship">
+                        <option value="">Select</option>
+                        <option value="reproduction">I want to reproduce my reference</option>
+                        <option value="adaptations">Open to adaptations</option>
+                        <option value="interpretation">Want artistic interpretation</option>
+                        <option value="development">Develop idea together</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="timeline">Preferred date to tattoo</label>
+                    <input type="date" class="form-input" id="timeline" name="timeline">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="traveling">Traveling specifically for this project?</label>
+                    <select class="form-select" id="traveling" name="traveling">
+                        <option value="">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
+                    <button type="button" class="btn btn-prev">< Prev</button>
+                    <button type="button" class="btn btn-primary btn-next">Next Step ></button>
+                </div>
+            </div>
+
+            <!-- STEP 4: Logistics -->
+            <div class="form-step" data-step="4" style="display: none;">
+                <div class="form-group form-full">
+                    <label class="form-label" for="investment">Investment range *</label>
+                    <select class="form-select" id="investment" name="investment" required>
+                        <option value="">Select</option>
+                        <option value="1000-2000">R$1.000–2.000</option>
+                        <option value="2000-4000">R$2.000–4.000</option>
+                        <option value="4000-8000">R$4.000–8.000</option>
+                        <option value="8000-12000">R$8.000–12.000</option>
+                        <option value="12000+">R$12.000+</option>
+                        <option value="reference">No reference yet</option>
+                    </select>
+                </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="whyJx4rt">Why JX.4RT?</label>
+                    <textarea class="form-textarea" id="whyJx4rt" name="whyJx4rt"></textarea>
+                </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="source">How did you discover JX.4RT? *</label>
+                    <select class="form-select" id="source" name="source" required>
+                        <option value="">Select</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="referral">Referral</option>
+                        <option value="site">Site</option>
+                        <option value="research">Research</option>
+                        <option value="returning">Previous client</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
+                    <button type="button" class="btn btn-prev">< Prev</button>
+                    <button type="submit" class="btn btn-primary" id="btn-submit">Submit Project</button>
+                </div>
+            </div>
             </form>
         </div>
     </section>

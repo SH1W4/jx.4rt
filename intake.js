@@ -42,7 +42,7 @@ const ProjectIntelligence = {
         if (source === 'returning') signal += 20;
         else if (source === 'referral') signal += 16;
         else if (source === 'research') signal += 12;
-        else if (source === 'instagram') signal += 8;
+        else if (source === 'instagram' || source === 'site') signal += 8;
         else signal += 4;
         
         return Math.min(signal, 100);
@@ -62,14 +62,19 @@ const ProjectIntelligence = {
         else if (authorship === 'adaptations') signal += 20;
         else if (authorship === 'reproduction') signal += 10;
         
-        // Why JX.4RT (30 points)
+        // Style match (10 points) - bonus for blackwork/abstract (JX.4RT specialty)
+        const style = formData.style;
+        if (style === 'blackwork-abstract') signal += 10;
+        else if (style === 'blackwork' || style === 'abstract') signal += 5;
+        
+        // Why JX.4RT (20 points)
         const whyJx4rt = formData.whyJx4rt || '';
         const whyLength = whyJx4rt.length;
-        if (whyLength > 100) signal += 30;
-        else if (whyLength > 50) signal += 24;
-        else if (whyLength > 20) signal += 18;
-        else if (whyLength > 10) signal += 12;
-        else signal += 6;
+        if (whyLength > 100) signal += 20;
+        else if (whyLength > 50) signal += 16;
+        else if (whyLength > 20) signal += 12;
+        else if (whyLength > 10) signal += 8;
+        else signal += 4;
         
         // Intention depth (30 points)
         const importance = formData.importance || '';
@@ -439,15 +444,16 @@ const LeadIntelligence = ProjectIntelligence;
 // Form Handler & Stepper Logic
 const FormHandler = {
     currentStep: 1,
-    totalSteps: 3,
+    totalSteps: 4,
     titles: [
-        "01 // IDENTITY & PROJECT",
-        "02 // INTENTION & LOGISTICS",
-        "03 // ACQUISITION & SUBMISSION"
+        "01 // IDENTITY & CONTACT",
+        "02 // PROJECT DETAILS",
+        "03 // INTENTION",
+        "04 // LOGISTICS"
     ],
 
     init() {
-        this.form = document.getElementById('project-intake-form');
+        this.form = document.getElementById('intake-form');
         if (!this.form) return;
 
         this.steps = this.form.querySelectorAll('.form-step');
@@ -464,10 +470,39 @@ const FormHandler = {
             btn.addEventListener('click', () => this.prevStep());
         });
         
-        // Initial Scramble
-        if(this.stepTitle) {
-            this.scrambleText(this.stepTitle, this.titles[0]);
+        // Allergies toggle
+        const allergiesSelect = document.getElementById('allergies');
+        if (allergiesSelect) {
+            allergiesSelect.addEventListener('change', (e) => {
+                const detail = document.getElementById('allergiesDetail');
+                if (detail) {
+                    detail.style.display = e.target.value === 'yes' ? 'block' : 'none';
+                }
+            });
         }
+        
+        // Age validation on birthdate change
+        const birthdateInput = document.getElementById('birthdate');
+        if (birthdateInput) {
+            birthdateInput.addEventListener('change', (e) => {
+                const age = this.calculateAge(e.target.value);
+                if (age < 18) {
+                    alert('You must be 18 or older to get a tattoo.');
+                    e.target.value = '';
+                }
+            });
+        }
+    },
+    
+    calculateAge(birthdate) {
+        const today = new Date();
+        const birthDate = new Date(birthdate);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
     },
     
     validateStep() {
@@ -575,7 +610,14 @@ const FormHandler = {
     getFormData(form) {
         const formData = new FormData(form);
         const data = {};
-        formData.forEach((value, key) => data[key] = value);
+        formData.forEach((value, key) => {
+            // Handle file uploads - convert to placeholder for Netlify Forms
+            if (value instanceof File) {
+                data[key] = `[FILE: ${value.name}]`;
+            } else {
+                data[key] = value;
+            }
+        });
         return data;
     },
     
