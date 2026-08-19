@@ -9,11 +9,11 @@ const JX_CONFIG = {
     // Artist Information
     artist: {
         name: "JX.4RT",
-        location: "São Paulo",
+        location: "Salvador",
         country: "Brazil",
         instagram: "@jx.4rt",
         email: "jx4rt@art.com",
-        whatsapp: "+55 11 99999-9999"
+        whatsapp: "+55 71 99999-9999"
     },
 
     // Pricing Configuration (INTERNAL USE ONLY - PRIVATE)
