@@ -55,32 +55,44 @@ NOT:
 
 ---
 
+## MANIFESTO
+
+> WE DO NOT FOLLOW THE PATHS. WE CARVE OUR OWN.
+> WE DO NOT SEEK APPROVAL.
+> WE SEEK TRUTH IN FORM.
+> WE DO NOT CREATE TO SELL.
+> WE CREATE TO LEAVE A TRACE.
+>
+> WE ARE NOT A BRAND.
+> WE ARE AN ARCHIVE IN PROGRESS.
+>
+> ART IS NOT DECORATION.
+> IT IS MEDIUM. IT IS MEMORY. IT IS ORIGIN. IT IS FREQUENCY.
+
+---
+
 ## VISUAL IDENTITY
 
-### Palette
-- Deep black (#080808)
+### The NEXUS Symbol
+- **Meaning**: The intersection between origin and expression.
+- **Form**: Sharp, four-pointed star.
+
+### Palette & Textures
+- Deep black (#050505)
 - White/off-white (#f5f5f5)
 - Gray (#a0a0a0)
-
-### Elements
-- Technical lines
-- Grids
-- Symbols
-- Codes
+- **Materials**: Paper Rough, Stone Carved, Metal Brushed, Ink Absolute, Fabric Woven.
 
 ### Typography
-- Editorial, archival aesthetic
-- Helvetica Neue, Arial
+- **Primary**: Custom Glyph System (extended serifs, structural geometry).
+- **Secondary**: Monospace / Extended (technical annotations, codes).
+- **Tertiary**: Condensed / Light (editorial text).
 
-### Style
-- Brutalism refined
-- Visual system feel
-
-### Philosophy
-- Materiality
-- Precision
-- Visual silence
-- Technology through structure, not clichés
+### Grid & Spatial Philosophy
+- Space is as important as form.
+- Break the grid, not the harmony.
+- Hierarchy through scale and silence.
+- Brutalism refined: Technology through structure, not clichés.
 
 ### Anti-Patterns (What to Avoid)
 - Generic cyberpunk (neon RGB, cyan RGB, magenta)

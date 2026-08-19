@@ -10,6 +10,9 @@ admin.html
 *.backup
 *.bak
 
+# Integration projects (not part of JX.4RT)
+integration/
+
 # OS files
 .DS_Store
 Thumbs.db

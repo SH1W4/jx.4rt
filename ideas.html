@@ -378,7 +378,8 @@
             <h2 class="section-title">Submit Your Idea</h2>
             <p class="section-subtitle">Tell us about your opportunity. We'll review and respond within 7 days.</p>
         </div>
-        <form id="idea-form">
+        <form id="idea-form" name="idea-submission" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="idea-submission">
             <div class="form-group">
                 <label class="form-label" for="name">Name / Organization</label>
                 <input type="text" id="name" class="form-input" required>

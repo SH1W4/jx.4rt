@@ -20,46 +20,47 @@ Map and evolve the JX.4RT artistic language.
 
 ## LANGUAGE MAP
 
-### THEMES
-Recurring conceptual themes in the work.
+### 01 - GLYPH SYSTEM
+- **Primary Alphabet**: Custom glyph alphabet mixing serif display and sharp geometric cuts.
+- **Glyph Construction**: Evolution from standard letters (J, X, 4, R, T) into stylized, almost architectural forms.
+- **Alternate Characters**: Extended serif variants (A, K, R, N, E).
 
-### MOTIFS
-Recurring visual elements.
+### 02 - SYMBOL SYSTEM
+- **Primary Symbol**: NEXUS (The intersection between origin and expression. A sharp four-pointed star).
+- **Secondary Symbols**: Void, Orbit, Monolith, Signal, Fold, Echo, Tension, Anchor, Relic, Intersect.
+- **Symbol Usage**: Full, Cut, Small, Pattern.
 
-### FORM
-Structural approach to form.
+### 03 - GRID SYSTEM
+- **Spatial Rules**:
+  - Space is as important as form.
+  - Align with intention.
+  - Break the grid, not the harmony.
+  - Hierarchy through scale and silence.
 
-### COMPOSITION
-Compositional strategies.
+### 04 - TEXTURES & MATERIALS
+- **Material Application**: 
+  - Paper Rough
+  - Stone Carved
+  - Metal Brushed
+  - Ink Absolute
+  - Fabric Woven
 
-### CONTRAST
-Use of contrast (light/dark, positive/negative space).
+### 05 - CODE & IDENTIFIERS
+- **Code System**: Barcodes and technical strings (e.g., `JX•4RT•A07`).
+- **Archive Marks**: Geometric patterns (Mark 01 to Mark 04).
 
-### MATERIALITY
-Relationship with material/body.
-
-### ANATOMY
-Approach to anatomy/body.
-
-### SYMBOLISM
-Symbolic language and meaning.
-
-### TECHNIQUE
-Technical approaches and execution.
-
-### REFERENCE
-Artistic references and influences.
-
-### EXPERIMENTATION
-Areas of active experimentation.
+### 06 - TYPOGRAPHY PAIRING
+- **Primary**: JX.4RT Custom Glyph System.
+- **Secondary**: Monospace / Extended.
+- **Tertiary**: Condensed / Light.
 
 ---
 
 ## SIGNATURE ELEMENTS
 
-Elements that are becoming recognizable as JX.4RT signature.
-
-**Current Status**: To be populated as work evolves.
+- The NEXUS symbol.
+- High-contrast, monochromatic brutalism (Deep Black, Off-white).
+- Monospace typographic accents alongside editorial serifs.
 
 ---
 
