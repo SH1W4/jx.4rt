@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JX.4RT - Visual Language Through Tattoo</title>
-    <meta name="description" content="JX.4RT develops visual language systems through tattoo. Based in Salvador, Brazil. Specializing in symbols, composition, and narrative systems on skin.">
+    <title>JX.4RT - Linguagem Visual Através da Tatuagem</title>
+    <meta name="description" content="JX.4RT desenvolve sistemas de linguagem visual através da tatuagem. Baseado em Salvador, Brasil. Especializado em símbolos, composição e sistemas narrativos na pele.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://jx4rt.com">
     
@@ -578,6 +578,25 @@
             letter-spacing: 0.1em;
         }
 
+        /* Language Toggle Button */
+        .lang-toggle {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .lang-toggle:hover {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .nav-links {
@@ -599,40 +618,42 @@
 
     </style>
     <script src="config.js"></script>
+    <script src="translations.js"></script>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="nav" role="navigation" aria-label="Main navigation">
         <a href="#" class="nav-logo" aria-label="JX.4RT home">JX.4RT</a>
         <ul class="nav-links">
-            <li><a href="#work">Work</a></li>
-            <li><a href="#process">Process</a></li>
-            <li><a href="ideas.html">Ideas</a></li>
+            <li><a href="#work" data-i18n="nav-work">Trabalho</a></li>
+            <li><a href="#process" data-i18n="nav-process">Processo</a></li>
+            <li><a href="ideas.html" data-i18n="nav-ideas">Ideias</a></li>
         </ul>
-        <a href="#intake" class="nav-cta">Start Project</a>
+        <button id="lang-toggle" class="lang-toggle" aria-label="Toggle language">EN</button>
+        <a href="#intake" class="nav-cta" data-i18n="nav-start">Iniciar Projeto</a>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" aria-labelledby="hero-title">
         <div class="hero-content">
             <div>
-                <p class="hero-section-number" aria-hidden="true">01 — VISUAL LANGUAGE SYSTEM</p>
+                <p class="hero-section-number" aria-hidden="true" data-i18n="hero-subtitle">01 — SISTEMA DE LINGUAGEM VISUAL</p>
                 <p class="hero-statement">
-                    ART IS NOT DECORATION.<br>
-                    IT IS MEDIUM.<br>
-                    IT IS MEMORY.<br>
-                    IT IS ORIGIN.<br>
-                    IT IS FREQUENCY.
+                    ARTE NÃO É DECORAÇÃO.<br>
+                    É MEIO.<br>
+                    É MEMÓRIA.<br>
+                    É ORIGEM.<br>
+                    É FREQUÊNCIA.
                 </p>
             </div>
             
             <div>
-                <h1 id="hero-title" class="hero-title">JX.4RT</h1>
-                <p class="hero-tagline">[ ORIGIN UNKNOWN : EXPRESSION UNLIMITED ]</p>
+                <h1 class="hero-title">JX.4RT</h1>
+                <p class="hero-tagline" data-i18n="hero-tagline">[ ORIGEM DESCONHECIDA : EXPRESSÃO ILIMITADA ]</p>
                 
-                <div class="hero-cta" style="margin-top: var(--space-md);">
-                    <a href="#intake" class="btn btn-primary">Start Project</a>
-                    <a href="#work" class="btn">View Work</a>
+                <div class="hero-cta">
+                    <a href="#intake" class="btn btn-primary" data-i18n="hero-start">Iniciar Projeto</a>
+                    <a href="#work" class="btn btn-secondary" data-i18n="hero-view">Ver Trabalho</a>
                 </div>
             </div>
         </div>
@@ -645,9 +666,9 @@
     <section id="statement" aria-labelledby="statement-title">
         <div class="section-header">
             <p class="section-number" aria-hidden="true">02</p>
-            <p class="section-tagline">Statement</p>
-            <h2 id="statement-title" class="section-title">Not just a tattoo artist</h2>
-            <p class="section-subtitle">JX.4RT develops visual language systems. Each piece is a composition of symbols, narrative, and structure. The tattoo is the medium. The language is the work.</p>
+            <p class="section-tagline" data-i18n="statement-subtitle">Declaração</p>
+            <h2 id="statement-title" class="section-title" data-i18n="statement-heading">Não apenas um tatuador</h2>
+            <p class="section-subtitle" data-i18n="statement-text">JX.4RT desenvolve sistemas de linguagem visual. Cada peça é uma composição de símbolos, narrativa e estrutura. A tatuagem é o meio. A linguagem é o trabalho.</p>
         </div>
     </section>
 
@@ -655,9 +676,9 @@
     <section id="work" aria-labelledby="work-title">
         <div class="section-header">
             <p class="section-number" aria-hidden="true">03</p>
-            <p class="section-tagline">Work</p>
-            <h2 id="work-title" class="section-title">Selected Projects</h2>
-            <p class="section-subtitle">Archive of visual language compositions on skin.</p>
+            <p class="section-tagline" data-i18n="work-subtitle">Trabalho</p>
+            <h2 id="work-title" class="section-title" data-i18n="work-heading">Projetos Selecionados</h2>
+            <p class="section-subtitle" data-i18n="work-subheading">Arquivo de composições de linguagem visual na pele.</p>
         </div>
         <div class="portfolio-grid" role="list">
             <article class="portfolio-item" role="listitem">
@@ -699,30 +720,30 @@
     <section id="visual-language" aria-labelledby="visual-language-title">
         <div class="section-header">
             <p class="section-number" aria-hidden="true">04</p>
-            <p class="section-tagline">Visual Language</p>
-            <h2 id="visual-language-title" class="section-title">Language Elements</h2>
-            <p class="section-subtitle">The vocabulary of the work.</p>
+            <p class="section-tagline" data-i18n="visual-language-subtitle">Linguagem Visual</p>
+            <h2 id="visual-language-title" class="section-title" data-i18n="visual-language-heading">Elementos da Linguagem</h2>
+            <p class="section-subtitle" data-i18n="visual-language-subheading">O vocabulário do trabalho.</p>
         </div>
         <div class="process-steps" role="list">
             <div class="process-step" role="listitem">
                 <div class="step-number" aria-hidden="true">01</div>
-                <h3 class="step-title">Symbols</h3>
-                <p class="step-desc">Encoded meaning through visual elements</p>
+                <h3 class="step-title" data-i18n="visual-language-symbols">Símbolos</h3>
+                <p class="step-desc" data-i18n="visual-language-symbols-desc">Significado codificado através de elementos visuais</p>
             </div>
             <div class="process-step" role="listitem">
                 <div class="step-number" aria-hidden="true">02</div>
-                <h3 class="step-title">Composition</h3>
-                <p class="step-desc">Structural balance and spatial relationships</p>
+                <h3 class="step-title" data-i18n="visual-language-composition">Composição</h3>
+                <p class="step-desc" data-i18n="visual-language-composition-desc">Equilíbrio estrutural e relações espaciais</p>
             </div>
             <div class="process-step" role="listitem">
                 <div class="step-number" aria-hidden="true">03</div>
-                <h3 class="step-title">Line</h3>
-                <p class="step-desc">Technical precision and weight</p>
+                <h3 class="step-title" data-i18n="visual-language-line">Linha</h3>
+                <p class="step-desc" data-i18n="visual-language-line-desc">Precisão técnica e peso</p>
             </div>
             <div class="process-step" role="listitem">
                 <div class="step-number" aria-hidden="true">04</div>
-                <h3 class="step-title">Negative Space</h3>
-                <p class="step-desc">Silence as compositional element</p>
+                <h3 class="step-title" data-i18n="visual-language-negative-space">Espaço Negativo</h3>
+                <p class="step-desc" data-i18n="visual-language-negative-space-desc">Silêncio como elemento composicional</p>
             </div>
         </div>
     </section>
@@ -731,30 +752,30 @@
     <section id="process" aria-labelledby="process-title">
         <div class="section-header">
             <p class="section-number" aria-hidden="true">06</p>
-            <p class="section-tagline">Process</p>
-            <h2 id="process-title" class="section-title">Development</h2>
-            <p class="section-subtitle">From idea to execution.</p>
+            <p class="section-tagline" data-i18n="process-subtitle">Processo</p>
+            <h2 id="process-title" class="section-title" data-i18n="process-heading">Desenvolvimento</h2>
+            <p class="section-subtitle" data-i18n="process-subheading">Da ideia à execução.</p>
         </div>
         <div class="process-steps" role="list">
             <div class="process-step" role="listitem">
                 <div class="step-number" aria-hidden="true">01</div>
-                <h3 class="step-title">Idea</h3>
-                <p class="step-desc">Understanding the concept and intention</p>
+                <h3 class="step-title" data-i18n="process-idea">Ideia</h3>
+                <p class="step-desc" data-i18n="process-idea-desc">Compreender o conceito e intenção</p>
             </div>
             <div class="process-step" role="listitem">
                 <div class="step-number" aria-hidden="true">02</div>
-                <h3 class="step-title">Briefing</h3>
-                <p class="step-desc">Detailed discussion of scope and expectations</p>
+                <h3 class="step-title" data-i18n="process-briefing">Briefing</h3>
+                <p class="step-desc" data-i18n="process-briefing-desc">Discussão detalhada do escopo e expectativas</p>
             </div>
             <div class="process-step" role="listitem">
                 <div class="step-number" aria-hidden="true">03</div>
-                <h3 class="step-title">Design</h3>
-                <p class="step-desc">Development of visual composition</p>
+                <h3 class="step-title" data-i18n="process-design">Design</h3>
+                <p class="step-desc" data-i18n="process-design-desc">Desenvolvimento da composição visual</p>
             </div>
             <div class="process-step" role="listitem">
                 <div class="step-number" aria-hidden="true">04</div>
-                <h3 class="step-title">Tattoo</h3>
-                <p class="step-desc">Execution with technical precision</p>
+                <h3 class="step-title" data-i18n="process-tattoo">Tatuagem</h3>
+                <p class="step-desc" data-i18n="process-tattoo-desc">Execução com precisão técnica</p>
             </div>
         </div>
     </section>
@@ -763,16 +784,16 @@
     <section id="about" aria-labelledby="about-title">
         <div class="section-header">
             <p class="section-number" aria-hidden="true">07</p>
-            <p class="section-tagline">About</p>
+            <p class="section-tagline" data-i18n="about-subtitle">Sobre</p>
             <h2 id="about-title" class="section-title">JX.4RT</h2>
-            <p class="section-subtitle">Artist developing visual language through tattoo.</p>
+            <p class="section-subtitle" data-i18n="about-subheading">Artista desenvolvendo linguagem visual através da tatuagem.</p>
         </div>
         <div class="form-section">
-            <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
-                Based in Salvador, Brazil. Working at the intersection of tattoo and visual language development.
+            <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;" data-i18n="about-location">
+                Baseado em Salvador, Brasil. Trabalhando na intersecção entre tatuagem e desenvolvimento de linguagem visual.
             </p>
-            <p style="color: var(--text-secondary); line-height: 1.8;">
-                Each project is a unique composition. No reproductions. Original visual language for each client.
+            <p style="color: var(--text-secondary); line-height: 1.8;" data-i18n="about-unique">
+                Cada projeto é uma composição única. Sem reproduções. Linguagem visual original para cada cliente.
             </p>
         </div>
     </section>
@@ -781,161 +802,161 @@
     <section id="intake" aria-labelledby="intake-title">
         <div class="section-header">
             <p class="section-number" aria-hidden="true">07</p>
-            <p class="section-tagline">Intake</p>
-            <h2 id="intake-title" class="section-title">Start a Project</h2>
-            <p class="section-subtitle">Tell us about your project. We'll review and respond within 48 hours.</p>
+            <p class="section-tagline" data-i18n="intake-subtitle">Intake</p>
+            <h2 id="intake-title" class="section-title" data-i18n="intake-heading">Iniciar um Projeto</h2>
+            <p class="section-subtitle" data-i18n="intake-subheading">Conte-nos sobre seu projeto. Analisaremos e responderemos em 48 horas.</p>
         </div>
         <form id="intake-form" class="intake-form" name="project-intake" method="POST" data-netlify="true" enctype="multipart/form-data">
             <!-- STEP 1: Identity & Contact -->
             <div class="form-step active" data-step="1" style="display: contents;">
                 <div class="form-group form-full">
-                    <label class="form-label" for="name">Name *</label>
+                    <label class="form-label" for="name" data-i18n="form-name">Nome *</label>
                     <input type="text" class="form-input" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="birthdate">Date of Birth *</label>
+                    <label class="form-label" for="birthdate" data-i18n="form-birthdate">Data de Nascimento *</label>
                     <input type="date" class="form-input" id="birthdate" name="birthdate" required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="city">City *</label>
+                    <label class="form-label" for="city" data-i18n="form-city">Cidade *</label>
                     <input type="text" class="form-input" id="city" name="city" required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="whatsapp">WhatsApp *</label>
+                    <label class="form-label" for="whatsapp" data-i18n="form-whatsapp">WhatsApp *</label>
                     <input type="tel" class="form-input" id="whatsapp" name="whatsapp" required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="instagram">Instagram</label>
+                    <label class="form-label" for="instagram" data-i18n="form-instagram">Instagram</label>
                     <input type="text" class="form-input" id="instagram" name="instagram">
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="email">Email *</label>
+                    <label class="form-label" for="email" data-i18n="form-email">Email *</label>
                     <input type="email" class="form-input" id="email" name="email" required>
                 </div>
                 <div class="form-group form-full" style="margin-top: 1rem;">
-                    <button type="button" class="btn btn-primary btn-next">Next Step ></button>
+                    <button type="button" class="btn btn-primary btn-next" data-i18n="form-next">Próximo ></button>
                 </div>
             </div>
 
             <!-- STEP 2: Project Details -->
             <div class="form-step" data-step="2" style="display: none;">
                 <div class="form-group form-full">
-                    <label class="form-label" for="projectDescription">Describe your idea with maximum detail *</label>
+                    <label class="form-label" for="projectDescription" data-i18n="form-description">Descreva sua ideia com máximo detalhe *</label>
                     <textarea class="form-textarea" id="projectDescription" name="projectDescription" required></textarea>
                 </div>
                 <div class="form-group form-full">
-                    <label class="form-label" for="style">Style *</label>
+                    <label class="form-label" for="style" data-i18n="form-style">Estilo *</label>
                     <select class="form-select" id="style" name="style" required>
-                        <option value="">Select</option>
-                        <option value="blackwork">Blackwork</option>
-                        <option value="abstract">Abstract</option>
-                        <option value="blackwork-abstract">Blackwork / Abstract</option>
+                        <option value="">Selecione</option>
+                        <option value="blackwork" data-i18n="form-style-blackwork">Blackwork</option>
+                        <option value="abstract" data-i18n="form-style-abstract">Abstrato</option>
+                        <option value="blackwork-abstract" data-i18n="form-style-blackwork-abstract">Blackwork / Abstrato</option>
                     </select>
                 </div>
                 <div class="form-group form-full">
-                    <label class="form-label" for="references">Reference images (optional)</label>
+                    <label class="form-label" for="references" data-i18n="form-references">Imagens de referência (opcional)</label>
                     <input type="file" class="form-input" id="references" name="references" multiple accept="image/*">
                 </div>
                 <div class="form-group form-full">
-                    <label class="form-label" for="bodyAreaPhoto">Photo of body area *</label>
+                    <label class="form-label" for="bodyAreaPhoto" data-i18n="form-body-photo">Foto da área do corpo *</label>
                     <input type="file" class="form-input" id="bodyAreaPhoto" name="bodyAreaPhoto" accept="image/*" required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="bodyArea">Body area *</label>
+                    <label class="form-label" for="bodyArea" data-i18n="form-body-area">Área do corpo *</label>
                     <input type="text" class="form-input" id="bodyArea" name="bodyArea" required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="size">Approximate size *</label>
+                    <label class="form-label" for="size" data-i18n="form-size">Tamanho aproximado *</label>
                     <input type="text" class="form-input" id="size" name="size" required>
                 </div>
                 <div class="form-group form-full">
-                    <label class="form-label" for="allergies">Do you have any allergies?</label>
+                    <label class="form-label" for="allergies" data-i18n="form-allergies">Você tem alguma alergia?</label>
                     <select class="form-select" id="allergies" name="allergies">
-                        <option value="no">No</option>
-                        <option value="yes">Yes</option>
+                        <option value="no" data-i18n="form-allergies-no">Não</option>
+                        <option value="yes" data-i18n="form-allergies-yes">Sim</option>
                     </select>
                 </div>
                 <div class="form-group form-full" id="allergiesDetail" style="display: none;">
-                    <label class="form-label" for="allergiesDescription">If yes, which?</label>
+                    <label class="form-label" for="allergiesDescription" data-i18n="form-allergies-detail">Se sim, qual?</label>
                     <input type="text" class="form-input" id="allergiesDescription" name="allergiesDescription">
                 </div>
                 <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
-                    <button type="button" class="btn btn-prev">< Prev</button>
-                    <button type="button" class="btn btn-primary btn-next">Next Step ></button>
+                    <button type="button" class="btn btn-prev" data-i18n="form-prev">< Anterior</button>
+                    <button type="button" class="btn btn-primary  btn-next" data-i18n="form-next">Próximo ></button>
                 </div>
             </div>
 
             <!-- STEP 3: Intention -->
             <div class="form-step" data-step="3" style="display: none;">
                 <div class="form-group form-full">
-                    <label class="form-label" for="importance">Why is this piece important to you? *</label>
+                    <label class="form-label" for="importance" data-i18n="form-importance">Por que esta peça é importante para você? *</label>
                     <textarea class="form-textarea" id="importance" name="importance" required></textarea>
                 </div>
                 <div class="form-group form-full">
-                    <label class="form-label" for="meaning">What should this tattoo communicate? *</label>
+                    <label class="form-label" for="meaning" data-i18n="form-meaning">O que esta tatuagem deve comunicar? *</label>
                     <textarea class="form-textarea" id="meaning" name="meaning" required></textarea>
                 </div>
                 <div class="form-group form-full">
-                    <label class="form-label" for="authorship">Authorship level</label>
+                    <label class="form-label" for="authorship" data-i18n="form-authorship">Nível de autoria</label>
                     <select class="form-select" id="authorship" name="authorship">
-                        <option value="">Select</option>
-                        <option value="reproduction">I want to reproduce my reference</option>
-                        <option value="adaptations">Open to adaptations</option>
-                        <option value="interpretation">Want artistic interpretation</option>
-                        <option value="development">Develop idea together</option>
+                        <option value="">Selecione</option>
+                        <option value="reproduction" data-i18n="form-authorship-reproduction">Quero reproduzir minha referência</option>
+                        <option value="adaptations" data-i18n="form-authorship-adaptations">Aberto a adaptações</option>
+                        <option value="interpretation" data-i18n="form-authorship-interpretation">Quero interpretação artística</option>
+                        <option value="development" data-i18n="form-authorship-development">Desenvolver ideia juntos</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="timeline">Preferred date to tattoo</label>
+                    <label class="form-label" for="timeline" data-i18n="form-timeline">Data preferida para tatuar</label>
                     <input type="date" class="form-input" id="timeline" name="timeline">
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="traveling">Traveling specifically for this project?</label>
+                    <label class="form-label" for="traveling" data-i18n="form-traveling">Viajando especificamente para este projeto?</label>
                     <select class="form-select" id="traveling" name="traveling">
-                        <option value="">Select</option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                        <option value="">Selecione</option>
+                        <option value="yes" data-i18n="form-traveling-yes">Sim</option>
+                        <option value="no" data-i18n="form-traveling-no">Não</option>
                     </select>
                 </div>
                 <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
-                    <button type="button" class="btn btn-prev">< Prev</button>
-                    <button type="button" class="btn btn-primary btn-next">Next Step ></button>
+                    <button type="button" class="btn btn-prev" data-i18n="form-prev">< Anterior</button>
+                    <button type="button" class="btn btn-primary  btn-next" data-i18n="form-next">Próximo ></button>
                 </div>
             </div>
 
             <!-- STEP 4: Logistics -->
             <div class="form-step" data-step="4" style="display: none;">
                 <div class="form-group form-full">
-                    <label class="form-label" for="investment">Investment range *</label>
+                    <label class="form-label" for="investment" data-i18n="form-investment">Faixa de investimento *</label>
                     <select class="form-select" id="investment" name="investment" required>
-                        <option value="">Select</option>
+                        <option value="">Selecione</option>
                         <option value="1000-2000">R$1.000–2.000</option>
                         <option value="2000-4000">R$2.000–4.000</option>
                         <option value="4000-8000">R$4.000–8.000</option>
                         <option value="8000-12000">R$8.000–12.000</option>
                         <option value="12000+">R$12.000+</option>
-                        <option value="reference">No reference yet</option>
+                        <option value="reference">Ainda não tenho referência</option>
                     </select>
                 </div>
                 <div class="form-group form-full">
-                    <label class="form-label" for="whyJx4rt">Why JX.4RT?</label>
+                    <label class="form-label" for="whyJx4rt" data-i18n="form-why-jx4rt">Por que JX.4RT?</label>
                     <textarea class="form-textarea" id="whyJx4rt" name="whyJx4rt"></textarea>
                 </div>
                 <div class="form-group form-full">
-                    <label class="form-label" for="source">How did you discover JX.4RT? *</label>
+                    <label class="form-label" for="source" data-i18n="form-source">Como descobriu o JX.4RT? *</label>
                     <select class="form-select" id="source" name="source" required>
-                        <option value="">Select</option>
-                        <option value="instagram">Instagram</option>
-                        <option value="referral">Referral</option>
-                        <option value="site">Site</option>
-                        <option value="research">Research</option>
-                        <option value="returning">Previous client</option>
-                        <option value="other">Other</option>
+                        <option value="">Selecione</option>
+                        <option value="instagram" data-i18n="form-source-instagram">Instagram</option>
+                        <option value="referral" data-i18n="form-source-referral">Indicação</option>
+                        <option value="site" data-i18n="form-source-site">Site</option>
+                        <option value="research" data-i18n="form-source-research">Pesquisa</option>
+                        <option value="returning" data-i18n="form-source-returning">Cliente anterior</option>
+                        <option value="other" data-i18n="form-source-other">Outro</option>
                     </select>
                 </div>
                 <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
-                    <button type="button" class="btn btn-prev">< Prev</button>
-                    <button type="submit" class="btn btn-primary" id="btn-submit">Submit Project</button>
+                    <button type="button" class="btn btn-prev" data-i18n="form-prev">< Anterior</button>
+                    <button type="submit" class="btn btn-primary" id="btn-submit" data-i18n="form-submit">Enviar Projeto</button>
                 </div>
             </div>
             </form>
@@ -946,17 +967,17 @@
     <footer class="footer" role="contentinfo">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>JX.4RT</h4>
-                <p>Salvador, Brazil</p>
+                <h4 data-i18n="footer-jx4rt">JX.4RT</h4>
+                <p data-i18n="footer-location">Salvador, Brasil</p>
             </div>
             <div class="footer-section">
-                <h4>Contact</h4>
-                <p>Instagram: <a href="https://instagram.com/jx.4rt" target="_blank" rel="noopener noreferrer">@jx.4rt</a></p>
-                <p>Email: <a href="mailto:jx4rt@art.com">jx4rt@art.com</a></p>
+                <h4 data-i18n="footer-contact">Contato</h4>
+                <p>Instagram: <a href="https://instagram.com/jx.4rt" target="_blank" rel="noopener noreferrer" data-i18n="footer-instagram">@jx.4rt</a></p>
+                <p>Email: <a href="mailto:jx4rt@art.com" data-i18n="footer-email">jx4rt@art.com</a></p>
             </div>
             <div class="footer-section">
-                <h4>Archive</h4>
-                <p>© 2024 JX.4RT</p>
+                <h4 data-i18n="footer-archive">Arquivo</h4>
+                <p data-i18n="footer-copyright">© 2024 JX.4RT</p>
             </div>
         </div>
     </footer>
