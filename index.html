@@ -103,6 +103,21 @@
             font-weight: 300;
         }
 
+        /* Portfolio Image Hover Filter */
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.2);
+            transition: filter 0.4s ease;
+            opacity: 0.8;
+        }
+
+        .portfolio-item:hover .portfolio-img {
+            filter: grayscale(0%) contrast(1);
+            opacity: 1;
+        }
+
         /* Navigation */
         .nav {
             position: fixed;
@@ -180,66 +195,75 @@
             color: var(--bg-deep);
         }
 
-        /* Hero Section */
+        /* Hero Section - Blueprint Mode */
         .hero {
             min-height: 100vh;
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: var(--space-sm);
-            align-content: center;
-            padding: var(--space-xl) var(--space-md);
+            grid-template-columns: 1fr 1fr; /* Split screen */
             border-bottom: 1px solid var(--border);
+            padding-top: 60px; /* offset for nav */
+            position: relative;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 60px; left: 50%;
+            bottom: 0; width: 1px;
+            background: var(--border);
         }
 
         .hero-content {
-            grid-column: 2 / 11;
-            position: relative;
-            z-index: 2;
-            text-align: left;
-            border-left: 2px solid var(--text-muted);
-            padding-left: var(--space-md);
+            padding: var(--space-xl) var(--space-md);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hero-graphic {
+            padding: var(--space-xl) var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('assets/nexus_grid.png');
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%) contrast(1.1);
         }
 
         .hero-section-number {
             font-size: 0.75rem;
             color: var(--text-muted);
             letter-spacing: 0.2em;
-            margin-bottom: var(--space-sm);
+            margin-bottom: var(--space-md);
         }
 
         .hero-tagline {
             color: var(--text-secondary);
             font-size: 0.8rem;
             letter-spacing: 0.15em;
-            margin-bottom: var(--space-md);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .hero-tagline::before {
-            content: '';
-            display: inline-block;
-            width: 30px;
-            height: 1px;
-            background-color: var(--text-secondary);
+            margin-bottom: var(--space-sm);
         }
 
         .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            line-height: 1;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 0.9;
             margin-bottom: var(--space-md);
             color: var(--text-primary);
-            letter-spacing: -0.04em;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
         }
 
         .hero-statement {
-            font-size: 1rem;
+            font-size: 0.7rem;
             color: var(--text-secondary);
             margin-bottom: var(--space-lg);
-            max-width: 600px;
-            line-height: 1.6;
+            max-width: 400px;
+            line-height: 1.8;
             font-weight: 400;
+            text-transform: uppercase;
+            font-family: var(--font-mono);
+            letter-spacing: 0.05em;
         }
 
         .hero-cta {
@@ -583,7 +607,7 @@
         <ul class="nav-links">
             <li><a href="#work">Work</a></li>
             <li><a href="#process">Process</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="ideas.html">Ideas</a></li>
         </ul>
         <a href="#intake" class="nav-cta">Start Project</a>
     </nav>
@@ -591,14 +615,29 @@
     <!-- Hero Section -->
     <section class="hero" aria-labelledby="hero-title">
         <div class="hero-content">
-            <p class="hero-section-number" aria-hidden="true">01</p>
-            <p class="hero-tagline">JX.4RT</p>
-            <h1 id="hero-title" class="hero-title">Visual language through tattoo</h1>
-            <p class="hero-statement">Developing symbols, composition, and narrative systems on skin. Tattoo is the medium. Visual language is the universe.</p>
-            <div class="hero-cta">
-                <a href="#intake" class="btn btn-primary">Start Project</a>
-                <a href="#work" class="btn">View Work</a>
+            <div>
+                <p class="hero-section-number" aria-hidden="true">01 — VISUAL LANGUAGE SYSTEM</p>
+                <p class="hero-statement">
+                    ART IS NOT DECORATION.<br>
+                    IT IS MEDIUM.<br>
+                    IT IS MEMORY.<br>
+                    IT IS ORIGIN.<br>
+                    IT IS FREQUENCY.
+                </p>
             </div>
+            
+            <div>
+                <h1 id="hero-title" class="hero-title">JX.4RT</h1>
+                <p class="hero-tagline">[ ORIGIN UNKNOWN : EXPRESSION UNLIMITED ]</p>
+                
+                <div class="hero-cta" style="margin-top: var(--space-md);">
+                    <a href="#intake" class="btn btn-primary">Start Project</a>
+                    <a href="#work" class="btn">View Work</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-graphic">
+            <!-- Background handled by CSS to show the NEXUS grid -->
         </div>
     </section>
 
@@ -622,35 +661,35 @@
         </div>
         <div class="portfolio-grid" role="list">
             <article class="portfolio-item" role="listitem">
-                <div class="portfolio-placeholder">[ Project 001 ]</div>
+                <img src="assets/tattoo_execution.png" alt="Tattoo Execution" class="portfolio-img">
                 <div class="portfolio-overlay">
-                    <p class="portfolio-code">PRJ-001</p>
-                    <h3 class="portfolio-title">Untitled</h3>
-                    <p class="portfolio-meta">Blackwork • Forearm</p>
+                    <p class="portfolio-code">NXS-001</p>
+                    <h3 class="portfolio-title">Tattoo Execution</h3>
+                    <p class="portfolio-meta">Grid System • Forearm</p>
                 </div>
             </article>
             <article class="portfolio-item" role="listitem">
-                <div class="portfolio-placeholder">[ Project 002 ]</div>
+                <img src="assets/editorial_poster.png" alt="Editorial Poster" class="portfolio-img">
                 <div class="portfolio-overlay">
-                    <p class="portfolio-code">PRJ-002</p>
-                    <h3 class="portfolio-title">Untitled</h3>
-                    <p class="portfolio-meta">Geometric • Back</p>
+                    <p class="portfolio-code">EDT-002</p>
+                    <h3 class="portfolio-title">Exhibition Format</h3>
+                    <p class="portfolio-meta">Monolith • Poster</p>
                 </div>
             </article>
             <article class="portfolio-item" role="listitem">
-                <div class="portfolio-placeholder">[ Project 003 ]</div>
+                <img src="assets/archive_tag.png" alt="Archive Tag" class="portfolio-img">
                 <div class="portfolio-overlay">
-                    <p class="portfolio-code">PRJ-003</p>
-                    <h3 class="portfolio-title">Untitled</h3>
-                    <p class="portfolio-meta">Dotwork • Arm</p>
+                    <p class="portfolio-code">TAG-003</p>
+                    <h3 class="portfolio-title">Metadata Tag</h3>
+                    <p class="portfolio-meta">Identifiers • Packaging</p>
                 </div>
             </article>
             <article class="portfolio-item" role="listitem">
-                <div class="portfolio-placeholder">[ Project 004 ]</div>
+                <img src="assets/system_texture.png" alt="System Texture" class="portfolio-img">
                 <div class="portfolio-overlay">
-                    <p class="portfolio-code">PRJ-004</p>
-                    <h3 class="portfolio-title">Untitled</h3>
-                    <p class="portfolio-meta">Technical • Chest</p>
+                    <p class="portfolio-code">TXT-004</p>
+                    <h3 class="portfolio-title">Material Base</h3>
+                    <p class="portfolio-meta">Ink Absolute • Canvas</p>
                 </div>
             </article>
         </div>
@@ -748,97 +787,126 @@
         </div>
         <div class="form-section">
             <form class="form-grid" id="project-intake-form" aria-labelledby="intake-title" novalidate>
-                <div class="form-group form-full">
-                    <label class="form-label" for="name">Name *</label>
-                    <input type="text" class="form-input" id="name" name="name" required aria-required="true">
+                <!-- Form Progress -->
+                <div class="form-progress form-full" aria-hidden="true" style="display: flex; gap: 5px; margin-bottom: 2rem;">
+                    <div class="progress-bar active" style="height: 4px; flex: 1; background: var(--text-primary);"></div>
+                    <div class="progress-bar" style="height: 4px; flex: 1; background: var(--border);"></div>
+                    <div class="progress-bar" style="height: 4px; flex: 1; background: var(--border);"></div>
                 </div>
-                <div class="form-group">
-                    <label class="form-label" for="instagram">Instagram</label>
-                    <input type="text" class="form-input" id="instagram" name="instagram">
+                <div class="form-full">
+                    <h3 id="step-title" style="font-family: var(--font-mono); margin-bottom: 1.5rem; color: var(--text-primary); font-size: 1.2rem;" data-scramble="true">01 // IDENTITY & PROJECT</h3>
                 </div>
-                <div class="form-group">
-                    <label class="form-label" for="email">Email *</label>
-                    <input type="email" class="form-input" id="email" name="email" required aria-required="true">
+
+                <!-- STEP 1 -->
+                <div class="form-step active" data-step="1" style="display: contents;">
+                    <div class="form-group form-full">
+                        <label class="form-label" for="name">Name *</label>
+                        <input type="text" class="form-input" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="instagram">Instagram</label>
+                        <input type="text" class="form-input" id="instagram" name="instagram">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email *</label>
+                        <input type="email" class="form-input" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="city">City</label>
+                        <input type="text" class="form-input" id="city" name="city">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="country">Country</label>
+                        <input type="text" class="form-input" id="country" name="country">
+                    </div>
+                    <div class="form-group form-full">
+                        <label class="form-label" for="projectDescription">What do you want to create? *</label>
+                        <textarea class="form-textarea" id="projectDescription" name="projectDescription" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="bodyArea">Body area</label>
+                        <input type="text" class="form-input" id="bodyArea" name="bodyArea">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="size">Approximate size</label>
+                        <input type="text" class="form-input" id="size" name="size">
+                    </div>
+                    <div class="form-group form-full" style="margin-top: 1rem;">
+                        <button type="button" class="btn btn-primary btn-next">Next Step ></button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="form-label" for="city">City</label>
-                    <input type="text" class="form-input" id="city" name="city">
+
+                <!-- STEP 2 -->
+                <div class="form-step" data-step="2" style="display: none;">
+                    <div class="form-group form-full">
+                        <label class="form-label" for="importance">Why is this piece important to you? *</label>
+                        <textarea class="form-textarea" id="importance" name="importance" required></textarea>
+                    </div>
+                    <div class="form-group form-full">
+                        <label class="form-label" for="meaning">What should this tattoo communicate? *</label>
+                        <textarea class="form-textarea" id="meaning" name="meaning" required></textarea>
+                    </div>
+                    <div class="form-group form-full">
+                        <label class="form-label" for="authorship">Authorship level</label>
+                        <select class="form-select" id="authorship" name="authorship">
+                            <option value="">Select</option>
+                            <option value="reproduction">I want to reproduce my reference</option>
+                            <option value="adaptations">Open to adaptations</option>
+                            <option value="interpretation">Want artistic interpretation</option>
+                            <option value="development">Develop idea together</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="timeline">When do you intend to tattoo?</label>
+                        <input type="text" class="form-input" id="timeline" name="timeline">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="traveling">Traveling specifically for this project?</label>
+                        <select class="form-select" id="traveling" name="traveling">
+                            <option value="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
+                        <button type="button" class="btn btn-prev">< Prev</button>
+                        <button type="button" class="btn btn-primary btn-next">Next Step ></button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="form-label" for="country">Country</label>
-                    <input type="text" class="form-input" id="country" name="country">
-                </div>
-                <div class="form-group form-full">
-                    <label class="form-label" for="projectDescription">What do you want to create? *</label>
-                    <textarea class="form-textarea" id="projectDescription" name="projectDescription" required aria-required="true"></textarea>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="bodyArea">Body area</label>
-                    <input type="text" class="form-input" id="bodyArea" name="bodyArea">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="size">Approximate size</label>
-                    <input type="text" class="form-input" id="size" name="size">
-                </div>
-                <div class="form-group form-full">
-                    <label class="form-label" for="importance">Why is this piece important to you? *</label>
-                    <textarea class="form-textarea" id="importance" name="importance" required aria-required="true"></textarea>
-                </div>
-                <div class="form-group form-full">
-                    <label class="form-label" for="meaning">What should this tattoo communicate? *</label>
-                    <textarea class="form-textarea" id="meaning" name="meaning" required aria-required="true"></textarea>
-                </div>
-                <div class="form-group form-full">
-                    <label class="form-label" for="authorship">Authorship level</label>
-                    <select class="form-select" id="authorship" name="authorship">
-                        <option value="">Select</option>
-                        <option value="reproduction">I want to reproduce my reference</option>
-                        <option value="adaptations">Open to adaptations</option>
-                        <option value="interpretation">Want artistic interpretation</option>
-                        <option value="development">Develop idea together</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="timeline">When do you intend to tattoo?</label>
-                    <input type="text" class="form-input" id="timeline" name="timeline">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="traveling">Traveling specifically for this project?</label>
-                    <select class="form-select" id="traveling" name="traveling">
-                        <option value="">Select</option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </div>
-                <div class="form-group form-full">
-                    <label class="form-label" for="investment">Investment range</label>
-                    <select class="form-select" id="investment" name="investment">
-                        <option value="">Select</option>
-                        <option value="1000-2000">R$1.000–2.000</option>
-                        <option value="2000-4000">R$2.000–4.000</option>
-                        <option value="4000-8000">R$4.000–8.000</option>
-                        <option value="8000-12000">R$8.000–12.000</option>
-                        <option value="12000+">R$12.000+</option>
-                        <option value="reference">No reference yet</option>
-                    </select>
-                </div>
-                <div class="form-group form-full">
-                    <label class="form-label" for="whyJx4rt">Why JX.4RT?</label>
-                    <textarea class="form-textarea" id="whyJx4rt" name="whyJx4rt"></textarea>
-                </div>
-                <div class="form-group form-full">
-                    <label class="form-label" for="source">How did you discover JX.4RT?</label>
-                    <select class="form-select" id="source" name="source">
-                        <option value="">Select</option>
-                        <option value="instagram">Instagram</option>
-                        <option value="referral">Referral</option>
-                        <option value="research">Research</option>
-                        <option value="returning">Previous client</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group form-full">
-                    <button type="submit" class="btn btn-primary">Submit Project</button>
+
+                <!-- STEP 3 -->
+                <div class="form-step" data-step="3" style="display: none;">
+                    <div class="form-group form-full">
+                        <label class="form-label" for="investment">Investment range</label>
+                        <select class="form-select" id="investment" name="investment">
+                            <option value="">Select</option>
+                            <option value="1000-2000">R$1.000–2.000</option>
+                            <option value="2000-4000">R$2.000–4.000</option>
+                            <option value="4000-8000">R$4.000–8.000</option>
+                            <option value="8000-12000">R$8.000–12.000</option>
+                            <option value="12000+">R$12.000+</option>
+                            <option value="reference">No reference yet</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-full">
+                        <label class="form-label" for="whyJx4rt">Why JX.4RT?</label>
+                        <textarea class="form-textarea" id="whyJx4rt" name="whyJx4rt"></textarea>
+                    </div>
+                    <div class="form-group form-full">
+                        <label class="form-label" for="source">How did you discover JX.4RT?</label>
+                        <select class="form-select" id="source" name="source">
+                            <option value="">Select</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="referral">Referral</option>
+                            <option value="research">Research</option>
+                            <option value="returning">Previous client</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
+                        <button type="button" class="btn btn-prev">< Prev</button>
+                        <button type="submit" class="btn btn-primary" id="btn-submit">Submit Project</button>
+                    </div>
                 </div>
             </form>
         </div>

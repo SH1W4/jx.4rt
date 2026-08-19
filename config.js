@@ -199,7 +199,7 @@ const JX_CONFIG = {
             EXHIBITION: { label: "Exhibition" },
             MEDIA: { label: "Media" },
             LICENSING: { label: "Licensing" },
-            ART_PROJECT: { label: "Art Project" ]
+            ART_PROJECT: { label: "Art Project" }
         },
         
         status: {

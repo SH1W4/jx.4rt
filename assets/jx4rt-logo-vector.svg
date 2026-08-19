@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 250" width="100%" height="100%">
+    <defs>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&amp;display=swap');
+            
+            .nexus { fill: #f5f5f5; }
+            .glyph { fill: #f5f5f5; }
+            
+            /* Guideline Grid */
+            .grid-line {
+                stroke: rgba(255,255,255,0.15);
+                stroke-width: 1px;
+                vector-effect: non-scaling-stroke;
+            }
+            
+            .subtitle {
+                fill: #a0a0a0;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 14px;
+                letter-spacing: 0.4em;
+            }
+        </style>
+    </defs>
+
+    <!-- Structural Grid Lines -->
+    <line x1="0" y1="125" x2="1000" y2="125" class="grid-line" stroke-dasharray="4 4" />
+    <line x1="80" y1="0" x2="80" y2="250" class="grid-line" stroke-dasharray="4 4" />
+    <line x1="200" y1="0" x2="200" y2="250" class="grid-line" />
+    
+    <!-- Registration Marks -->
+    <path d="M 20,20 L 40,20 M 20,20 L 20,40" stroke="rgba(255,255,255,0.3)" fill="none" stroke-width="1"/>
+    <path d="M 980,20 L 960,20 M 980,20 L 980,40" stroke="rgba(255,255,255,0.3)" fill="none" stroke-width="1"/>
+    <path d="M 20,230 L 40,230 M 20,230 L 20,210" stroke="rgba(255,255,255,0.3)" fill="none" stroke-width="1"/>
+    <path d="M 980,230 L 960,230 M 980,230 L 980,210" stroke="rgba(255,255,255,0.3)" fill="none" stroke-width="1"/>
+
+    <!-- NEXUS Star -->
+    <g transform="translate(80, 125)">
+        <path class="nexus" d="M -50,0 Q -8,-4 0,-60 Q 8,-4 50,0 Q 8,4 0,60 Q -8,4 -50,0 Z" />
+    </g>
+    
+    <!-- CUSTOM GLYPH SYSTEM VECTOR (JX.4RT) -->
+    <g transform="translate(230, 75) scale(1.1)">
+        <!-- J -->
+        <rect x="0" y="0" width="80" height="5" class="glyph" />
+        <rect x="55" y="0" width="18" height="90" class="glyph" />
+        <rect x="10" y="85" width="45" height="5" class="glyph" />
+        <rect x="10" y="65" width="5" height="25" class="glyph" />
+
+        <!-- X -->
+        <polygon points="100,0 120,0 180,110 160,110" class="glyph" />
+        <polygon points="175,0 185,0 115,110 105,110" class="glyph" />
+
+        <!-- . -->
+        <rect x="195" y="90" width="10" height="10" class="glyph" />
+
+        <!-- 4 -->
+        <rect x="270" y="0" width="15" height="110" class="glyph" />
+        <rect x="220" y="75" width="70" height="5" class="glyph" />
+        <polygon points="270,0 280,0 225,75 215,75" class="glyph" />
+
+        <!-- R -->
+        <rect x="310" y="0" width="15" height="110" class="glyph" />
+        <rect x="310" y="0" width="55" height="5" class="glyph" />
+        <rect x="310" y="55" width="50" height="5" class="glyph" />
+        <polygon points="360,0 375,15 375,40 360,60 355,55 365,40 365,15 355,5" class="glyph" />
+        <polygon points="340,55 360,55 390,110 370,110" class="glyph" />
+
+        <!-- T -->
+        <rect x="410" y="0" width="90" height="5" class="glyph" />
+        <rect x="448" y="0" width="15" height="110" class="glyph" />
+    </g>
+    
+    <!-- Subtitle -->
+    <text x="230" y="220" class="subtitle">[ ORIGIN UNKNOWN : EXPRESSION UNLIMITED ]</text>
+</svg>
