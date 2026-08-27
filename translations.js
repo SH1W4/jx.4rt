@@ -27,9 +27,9 @@ const translations = {
         
         // Work
         'work-title': '03',
-        'work-subtitle': 'Trabalho',
-        'work-heading': 'Projetos Selecionados',
-        'work-subheading': 'Arquivo de composições de linguagem visual na pele.',
+        'work-heading': 'Arquivo',
+        'work-subheading': 'Primeiras obras em breve.',
+        'archive-placeholder': 'O arquivo está sendo construído. Primeiras obras em breve.',
         
         // Visual Language
         'visual-language-title': '04',
@@ -197,8 +197,9 @@ const translations = {
         // Work
         'work-title': '03',
         'work-subtitle': 'Work',
-        'work-heading': 'Selected Projects',
-        'work-subheading': 'Archive of visual language compositions on skin.',
+        'work-heading': 'Archive',
+        'work-subheading': 'First works coming soon.',
+        'archive-placeholder': 'The archive is being built. First works coming soon.',
         
         // Visual Language
         'visual-language-title': '04',

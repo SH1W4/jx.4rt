@@ -225,10 +225,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-image: url('assets/nexus_grid.png');
-            background-size: cover;
-            background-position: center;
-            filter: grayscale(100%) contrast(1.1);
+            background: var(--bg);
+            border: 1px solid var(--border-light);
         }
 
         .hero-section-number {
@@ -428,6 +426,30 @@
         .portfolio-meta {
             color: var(--text-secondary);
             font-size: 0.75rem;
+        }
+
+        .archive-placeholder {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            padding: var(--space-lg);
+            text-align: center;
+        }
+
+        .ascii-art {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            line-height: 1.2;
+            color: var(--text-muted);
+            margin-bottom: var(--space-md);
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .archive-placeholder-text {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
         }
 
         /* Process Section */
@@ -677,42 +699,27 @@
         <div class="section-header">
             <p class="section-number" aria-hidden="true">03</p>
             <p class="section-tagline" data-i18n="work-subtitle">Trabalho</p>
-            <h2 id="work-title" class="section-title" data-i18n="work-heading">Projetos Selecionados</h2>
-            <p class="section-subtitle" data-i18n="work-subheading">Arquivo de composições de linguagem visual na pele.</p>
+            <h2 id="work-title" class="section-title" data-i18n="work-heading">Arquivo</h2>
+            <p class="section-subtitle" data-i18n="work-subheading">Primeiras obras em breve.</p>
         </div>
-        <div class="portfolio-grid" role="list">
-            <article class="portfolio-item" role="listitem">
-                <img src="assets/tattoo_execution.png" alt="Tattoo Execution" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <p class="portfolio-code">NXS-001</p>
-                    <h3 class="portfolio-title">Tattoo Execution</h3>
-                    <p class="portfolio-meta">Grid System • Forearm</p>
-                </div>
-            </article>
-            <article class="portfolio-item" role="listitem">
-                <img src="assets/editorial_poster.png" alt="Editorial Poster" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <p class="portfolio-code">EDT-002</p>
-                    <h3 class="portfolio-title">Exhibition Format</h3>
-                    <p class="portfolio-meta">Monolith • Poster</p>
-                </div>
-            </article>
-            <article class="portfolio-item" role="listitem">
-                <img src="assets/archive_tag.png" alt="Archive Tag" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <p class="portfolio-code">TAG-003</p>
-                    <h3 class="portfolio-title">Metadata Tag</h3>
-                    <p class="portfolio-meta">Identifiers • Packaging</p>
-                </div>
-            </article>
-            <article class="portfolio-item" role="listitem">
-                <img src="assets/system_texture.png" alt="System Texture" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <p class="portfolio-code">TXT-004</p>
-                    <h3 class="portfolio-title">Material Base</h3>
-                    <p class="portfolio-meta">Ink Absolute • Canvas</p>
-                </div>
-            </article>
+        <div class="archive-placeholder">
+            <pre class="ascii-art">
+   ╔═══════════════════════════════════════════════════════════════╗
+   ║                                                               ║
+   ║   [ ARCHIVE IN PROGRESS ]                                     ║
+   ║                                                               ║
+   ║   ┌─────────────────────────────────────────────────────┐    ║
+   ║   │                                                     │    ║
+   ║   │   SERIES-01  SERIES-02  SERIES-03  SERIES-04        │    ║
+   ║   │   [EMPTY]     [EMPTY]     [EMPTY]     [EMPTY]       │    ║
+   ║   │                                                     │    ║
+   ║   └─────────────────────────────────────────────────────┘    ║
+   ║                                                               ║
+   ║   Flash Library • Series Catalog • Acquisition System        ║
+   ║                                                               ║
+   ╚═══════════════════════════════════════════════════════════════╝
+            </pre>
+            <p class="archive-placeholder-text" data-i18n="archive-placeholder">O arquivo está sendo construído. Primeiras obras em breve.</p>
         </div>
     </section>
 
