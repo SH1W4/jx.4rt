@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JX.4RT - Body Canvas Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;300;400;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #050505;
+            --bg: #0a0a0a;
+            --bg-light: #141414;
+            --bg-surface: #0a0a0a;
+            --text-primary: #f5f5f5;
+            --text-secondary: #a0a0a0;
+            --text-muted: #4a4a4a;
+            --border: #333333;
+            --border-light: #222222;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Inter', sans-serif;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            padding: var(--space-lg);
+            min-height: 100vh;
+        }
+
+        .test-header {
+            margin-bottom: var(--space-lg);
+        }
+
+        .test-header h1 {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .test-header p {
+            color: var(--text-secondary);
+        }
+    </style</style>
+    <script src="config.js"></script>
+    <script src="translations.js"></script>
+</head>
+<body>
+    <div class="test-header">
+        <h1>Body Canvas Test</h1>
+        <p>Testing TCP (Tattoo Composition Protocol) integration</p>
+    </div>
+
+    <!-- Body Canvas Component -->
+    <div class="body-canvas-container" id="body-canvas-component">
+        <div class="canvas-header">
+            <p class="canvas-step-number">02 // CANVAS</p>
+            <h3 class="canvas-title" data-i18n="canvas-title">Select Body Area</h3>
+            <p class="canvas-subtitle" data-i18n="canvas-subtitle">Tap to select where you want to tattoo</p>
+        </div>
+        
+        <div class="canvas-wrapper">
+            <canvas id="body-canvas" class="body-canvas"></canvas>
+            <div class="canvas-overlay" id="body-canvas-display">
+                <p class="canvas-label">Selected Area</p>
+                <p class="canvas-value">None</p>
+            </div>
+        </div>
+        
+        <div class="canvas-controls">
+            <div class="canvas-control-group">
+                <label class="canvas-control-label" data-i18n="canvas-position-label">Position</label>
+                <button class="canvas-btn" id="add-position-btn" data-i18n="canvas-position-btn">Add Position Marker</button>
+            </div>
+            
+            <div class="canvas-control-group">
+                <label class="canvas-control-label" data-i18n="canvas-scale-label">Scale (CM)</label>
+                <div class="scale-controls">
+                    <div class="scale-input">
+                        <label>Width</label>
+                        <input type="range" id="scale-width" min="2" max="30" value="10" class="scale-slider">
+                        <span id="scale-width-value">10</span> cm
+                    </div>
+                    <div class="scale-input">
+                        <label>Height</label>
+                        <input type="range" id="scale-height" min="2" max="30" value="5" class="scale-slider">
+                        <span id="scale-height-value">5</span> cm
+                    </div>
+                </div>
+                <div class="scale-display" id="scale-display">
+                    <p class="canvas-label">Estimated Size</p>
+                    <p class="canvas-value">≈ 10 × 5 CM</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+    .body-canvas-container {
+        background: var(--bg-light);
+        border: 1px solid var(--border);
+        padding: var(--space-md);
+        margin-bottom: var(--space-md);
+    }
+
+    .canvas-header {
+        margin-bottom: var(--space-md);
+    }
+
+    .canvas-step-number {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        letter-spacing: 0.1em;
+        margin-bottom: var(--space-xs);
+    }
+
+    .canvas-title {
+        font-family: var(--font-mono);
+        font-size: 1rem;
+        color: var(--text-primary);
+        margin-bottom: var(--space-xs);
+    }
+
+    .canvas-subtitle {
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+    }
+
+    .canvas-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--bg);
+        border: 1px solid var(--border-light);
+        padding: var(--space-md);
+        margin-bottom: var(--space-md);
+    }
+
+    .body-canvas {
+        max-width: 100%;
+        cursor: pointer;
+    }
+
+    .canvas-overlay {
+        position: absolute;
+        top: var(--space-md);
+        right: var(--space-md);
+        background: var(--bg-light);
+        border: 1px solid var(--border);
+        padding: var(--space-sm);
+        min-width: 120px;
+    }
+
+    .canvas-label {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        letter-spacing: 0.05em;
+        margin-bottom: var(--space-xs);
+    }
+
+    .canvas-value {
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        color: var(--text-primary);
+    }
+
+    .canvas-controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-md);
+    }
+
+    .canvas-control-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .canvas-control-label {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        letter-spacing: 0.05em;
+        margin-bottom: var(--space-sm);
+    }
+
+    .canvas-btn {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--text-primary);
+        padding: var(--space-sm);
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .canvas-btn:hover {
+        background: var(--text-primary);
+        color: var(--bg);
+    }
+
+    .scale-controls {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+
+    .scale-input {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+    }
+
+    .scale-slider {
+        flex: 1;
+        -webkit-appearance: none;
+        appearance: none;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        height: 4px;
+    }
+
+    .scale-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 12px;
+        height: 12px;
+        background: var(--text-primary);
+        cursor: pointer;
+    }
+
+    .scale-slider::-moz-range-thumb {
+        width: 12px;
+        height: 12px;
+        background: var(--text-primary);
+        cursor: pointer;
+        border: none;
+    }
+
+    .scale-display {
+        margin-top: var(--space-sm);
+        padding: var(--space-sm);
+        background: var(--bg);
+        border: 1px solid var(--border-light);
+    }
+
+    @media (max-width: 768px) {
+        .canvas-controls {
+            grid-template-columns: 1fr;
+        }
+        
+        .canvas-wrapper {
+            padding: var(--space-sm);
+        }
+        
+        .canvas-overlay {
+            position: static;
+            margin-top: var(--space-sm);
+            width: 100%;
+        }
+    }
+    </style>
+
+    <script src="body-canvas.js"></script>
+</body>
+</html>

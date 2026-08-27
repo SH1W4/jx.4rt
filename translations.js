@@ -163,7 +163,14 @@ const translations = {
         'ideas-form-budget': 'Orçamento (se aplicável)',
         'ideas-form-budget-placeholder': 'Opcional',
         'ideas-form-submit': 'Enviar Ideia',
-        'ideas-footer': 'JX.4RT — SALVADOR, BRASIL — ARQUIVO EM PROGRESSO'
+        'ideas-footer': 'JX.4RT — SALVADOR, BRASIL — ARQUIVO EM PROGRESSO',
+        
+        // Body Canvas
+        'canvas-title': 'Selecionar Área do Corpo',
+        'canvas-subtitle': 'Toque para selecionar onde deseja tatuar',
+        'canvas-position-label': 'Posição',
+        'canvas-position-btn': 'Adicionar Marcador de Posição',
+        'canvas-scale-label': 'Escala (CM)'
     },
     
     en: {
@@ -325,7 +332,14 @@ const translations = {
         'ideas-form-budget': 'Budget (if applicable)',
         'ideas-form-budget-placeholder': 'Optional',
         'ideas-form-submit': 'Submit Idea',
-        'ideas-footer': 'JX.4RT — SALVADOR, BRAZIL — ARCHIVE IN PROGRESS'
+        'ideas-footer': 'JX.4RT — SALVADOR, BRAZIL — ARCHIVE IN PROGRESS',
+        
+        // Body Canvas
+        'canvas-title': 'Select Body Area',
+        'canvas-subtitle': 'Tap to select where you want to tattoo',
+        'canvas-position-label': 'Position',
+        'canvas-position-btn': 'Add Position Marker',
+        'canvas-scale-label': 'Scale (CM)'
     }
 };
 
