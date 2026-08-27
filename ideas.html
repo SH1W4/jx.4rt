@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JX.4RT - Ideas & Opportunities</title>
-    <meta name="description" content="Submit ideas and collaboration opportunities to JX.4RT. Fashion, editorial, exhibitions, collaborations, and artistic projects.">
+    <title>JX.4RT - Ideias e Oportunidades</title>
+    <meta name="description" content="Envie ideias e oportunidades de colaboração para JX.4RT. Moda, editorial, exposições, colaborações e projetos artísticos.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;300;400;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -287,6 +287,25 @@
             letter-spacing: 0.1em;
         }
 
+        /* Language Toggle Button */
+        .lang-toggle {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .lang-toggle:hover {
+            background: var(--text-primary);
+            color: var(--bg-deep);
+        }
+
         @media (max-width: 768px) {
             .hero {
                 padding: var(--space-lg) var(--space-sm);
@@ -301,72 +320,75 @@
             }
         }
     </style>
+    <script src="config.js"></script>
+    <script src="translations.js"></script>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="nav" role="navigation">
         <a href="index.html" class="nav-logo">JX.4RT</a>
         <ul class="nav-links">
-            <li><a href="index.html#work">Work</a></li>
-            <li><a href="index.html#process">Process</a></li>
-            <li><a href="index.html">Back</a></li>
+            <li><a href="index.html#work" data-i18n="nav-work">Trabalho</a></li>
+            <li><a href="index.html#process" data-i18n="nav-process">Processo</a></li>
+            <li><a href="index.html" data-i18n="nav-back">Voltar</a></li>
         </ul>
+        <button id="lang-toggle" class="lang-toggle" aria-label="Toggle language">EN</button>
     </nav>
 
     <!-- Hero -->
     <section class="hero">
-        <p class="hero-number">00 — IDEAS & OPPORTUNITIES</p>
-        <h1 class="hero-title">Submit an Idea</h1>
-        <p class="hero-subtitle">Collaborations, fashion, editorial, exhibitions, and artistic projects. JX.4RT is open to opportunities that expand the visual language beyond tattoo.</p>
+        <p class="hero-number" data-i18n="ideas-hero-number">00 — IDEIAS E OPORTUNIDADES</p>
+        <h1 class="hero-title" data-i18n="ideas-hero-title">Enviar uma Ideia</h1>
+        <p class="hero-subtitle" data-i18n="ideas-hero-subtitle">Colaborações, moda, editorial, exposições e projetos artísticos. JX.4RT está aberto a oportunidades que expandem a linguagem visual além da tatuagem.</p>
     </section>
 
     <!-- Opportunity Types -->
     <section class="opportunities">
         <div class="section-header">
             <p class="section-number">01</p>
-            <h2 class="section-title">Opportunity Types</h2>
-            <p class="section-subtitle">What kind of collaboration are you proposing?</p>
+            <h2 class="section-title" data-i18n="ideas-opportunities-title">Tipos de Oportunidade</h2>
+            <p class="section-subtitle" data-i18n="ideas-opportunities-subtitle">Que tipo de colaboração você está propondo?</p>
         </div>
         <div class="opportunity-grid">
             <div class="opportunity-card">
                 <p class="opportunity-code">COL-001</p>
-                <h3 class="opportunity-title">Collaboration</h3>
-                <p class="opportunity-desc">Joint artistic projects with other creators, brands, or institutions.</p>
+                <h3 class="opportunity-title" data-i18n="ideas-collab">Colaboração</h3>
+                <p class="opportunity-desc" data-i18n="ideas-collab-desc">Projetos artísticos conjuntos com outros criadores, marcas ou instituições.</p>
             </div>
             <div class="opportunity-card">
                 <p class="opportunity-code">FAS-002</p>
-                <h3 class="opportunity-title">Fashion</h3>
-                <p class="opportunity-desc">Clothing, accessories, or fashion campaigns featuring JX.4RT visual language.</p>
+                <h3 class="opportunity-title" data-i18n="ideas-fashion">Moda</h3>
+                <p class="opportunity-desc" data-i18n="ideas-fashion-desc">Roupas, acessórios ou campanhas de moda com a linguagem visual JX.4RT.</p>
             </div>
             <div class="opportunity-card">
                 <p class="opportunity-code">EDT-003</p>
-                <h3 class="opportunity-title">Editorial</h3>
-                <p class="opportunity-desc">Magazine features, interviews, or editorial content.</p>
+                <h3 class="opportunity-title" data-i18n="ideas-editorial">Editorial</h3>
+                <p class="opportunity-desc" data-i18n="ideas-editorial-desc">Matérias de revista, entrevistas ou conteúdo editorial.</p>
             </div>
             <div class="opportunity-card">
                 <p class="opportunity-code">EXH-004</p>
-                <h3 class="opportunity-title">Exhibition</h3>
-                <p class="opportunity-desc">Gallery shows, art fairs, or public installations.</p>
+                <h3 class="opportunity-title" data-i18n="ideas-exhibition">Exposição</h3>
+                <p class="opportunity-desc" data-i18n="ideas-exhibition-desc">Shows de galeria, feiras de arte ou instalações públicas.</p>
             </div>
             <div class="opportunity-card">
                 <p class="opportunity-code">BRD-005</p>
-                <h3 class="opportunity-title">Brand</h3>
-                <p class="opportunity-desc">Brand partnerships, campaigns, or commercial collaborations.</p>
+                <h3 class="opportunity-title" data-i18n="ideas-brand">Marca</h3>
+                <p class="opportunity-desc" data-i18n="ideas-brand-desc">Parcerias de marca, campanhas ou colaborações comerciais.</p>
             </div>
             <div class="opportunity-card">
                 <p class="opportunity-code">MED-006</p>
-                <h3 class="opportunity-title">Media</h3>
-                <p class="opportunity-desc">Documentaries, podcasts, or media appearances.</p>
+                <h3 class="opportunity-title" data-i18n="ideas-media">Mídia</h3>
+                <p class="opportunity-desc" data-i18n="ideas-media-desc">Documentários, podcasts ou aparições na mídia.</p>
             </div>
             <div class="opportunity-card">
                 <p class="opportunity-code">LIC-007</p>
-                <h3 class="opportunity-title">Licensing</h3>
-                <p class="opportunity-desc">Licensing JX.4RT visual language for products or applications.</p>
+                <h3 class="opportunity-title" data-i18n="ideas-licensing">Licenciamento</h3>
+                <p class="opportunity-desc" data-i18n="ideas-licensing-desc">Licenciamento da linguagem visual JX.4RT para produtos ou aplicações.</p>
             </div>
             <div class="opportunity-card">
                 <p class="opportunity-code">ART-008</p>
-                <h3 class="opportunity-title">Art Project</h3>
-                <p class="opportunity-desc">Experimental or conceptual art projects outside tattoo.</p>
+                <h3 class="opportunity-title" data-i18n="ideas-art">Projeto Artístico</h3>
+                <p class="opportunity-desc" data-i18n="ideas-art-desc">Projetos de arte experimental ou conceitual fora da tatuagem.</p>
             </div>
         </div>
     </section>
@@ -375,50 +397,50 @@
     <section class="form-section">
         <div class="section-header">
             <p class="section-number">02</p>
-            <h2 class="section-title">Submit Your Idea</h2>
-            <p class="section-subtitle">Tell us about your opportunity. We'll review and respond within 7 days.</p>
+            <h2 class="section-title" data-i18n="ideas-form-title">Envie sua Ideia</h2>
+            <p class="section-subtitle" data-i18n="ideas-form-subtitle">Conte-nos sobre sua oportunidade. Analisaremos e responderemos em 7 dias.</p>
         </div>
         <form id="idea-form" name="idea-submission" method="POST" data-netlify="true">
             <input type="hidden" name="form-name" value="idea-submission">
             <div class="form-group">
-                <label class="form-label" for="name">Name / Organization</label>
+                <label class="form-label" for="name" data-i18n="ideas-form-name">Nome / Organização</label>
                 <input type="text" id="name" class="form-input" required>
             </div>
             <div class="form-group">
-                <label class="form-label" for="email">Email</label>
+                <label class="form-label" for="email" data-i18n="form-email">Email</label>
                 <input type="email" id="email" class="form-input" required>
             </div>
             <div class="form-group">
-                <label class="form-label" for="type">Opportunity Type</label>
+                <label class="form-label" for="type" data-i18n="ideas-form-type">Tipo de Oportunidade</label>
                 <select id="type" class="form-select" required>
-                    <option value="">Select type...</option>
-                    <option value="COLLABORATION">Collaboration</option>
-                    <option value="FASHION">Fashion</option>
-                    <option value="EDITORIAL">Editorial</option>
-                    <option value="EXHIBITION">Exhibition</option>
-                    <option value="BRAND">Brand</option>
-                    <option value="MEDIA">Media</option>
-                    <option value="LICENSING">Licensing</option>
-                    <option value="ART_PROJECT">Art Project</option>
+                    <option value="">Selecione...</option>
+                    <option value="COLLABORATION" data-i18n="ideas-collab">Colaboração</option>
+                    <option value="FASHION" data-i18n="ideas-fashion">Moda</option>
+                    <option value="EDITORIAL" data-i18n="ideas-editorial">Editorial</option>
+                    <option value="EXHIBITION" data-i18n="ideas-exhibition">Exposição</option>
+                    <option value="BRAND" data-i18n="ideas-brand">Marca</option>
+                    <option value="MEDIA" data-i18n="ideas-media">Mídia</option>
+                    <option value="LICENSING" data-i18n="ideas-licensing">Licenciamento</option>
+                    <option value="ART_PROJECT" data-i18n="ideas-art">Projeto Artístico</option>
                 </select>
             </div>
             <div class="form-group">
-                <label class="form-label" for="idea">Your Idea</label>
-                <textarea id="idea" class="form-textarea" required placeholder="Describe your opportunity, timeline, and what you're looking for..."></textarea>
+                <label class="form-label" for="idea" data-i18n="ideas-form-idea">Sua Ideia</label>
+                <textarea id="idea" class="form-textarea" required placeholder="Descreva sua oportunidade, timeline e o que você está buscando..." data-i18n-placeholder="ideas-form-idea-placeholder"></textarea>
             </div>
             <div class="form-group">
-                <label class="form-label" for="budget">Budget (if applicable)</label>
-                <input type="text" id="budget" class="form-input" placeholder="Optional">
+                <label class="form-label" for="budget" data-i18n="ideas-form-budget">Orçamento (se aplicável)</label>
+                <input type="text" id="budget" class="form-input" placeholder="Opcional" data-i18n-placeholder="ideas-form-budget-placeholder">
             </div>
             <div class="form-submit">
-                <button type="submit" class="btn btn-primary">Submit Idea</button>
+                <button type="submit" class="btn btn-primary" data-i18n="ideas-form-submit">Enviar Ideia</button>
             </div>
         </form>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p class="footer-text">JX.4RT — SALVADOR, BRAZIL — ARCHIVE IN PROGRESS</p>
+        <p class="footer-text" data-i18n="ideas-footer">JX.4RT — SALVADOR, BRASIL — ARQUIVO EM PROGRESSO</p>
     </footer>
 
     <script src="config.js"></script>
