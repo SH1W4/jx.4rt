@@ -296,6 +296,9 @@ const JX_CONFIG = {
         adminRoute: "/admin",
         debugMode: false,
         
+        // Google Apps Script Integration
+        googleScriptUrl: "", // Cole a URL do seu Google Apps Script aqui após implantar
+        
         // Data privacy
         privacy: {
             exportEnabled: false,

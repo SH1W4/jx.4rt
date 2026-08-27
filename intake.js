@@ -658,27 +658,77 @@ const FormHandler = {
         
         if (!this.validateStep()) return;
         
-        const formData = this.getFormData(e.target);
-        const project = ProjectIntelligence.processProject(formData);
+        // Get form data
+        const formData = this.getFormData();
         
-        ProjectIntelligence.saveProject(project);
+        // Add BodyCanvas data if available
+        if (BodyCanvas) {
+            formData.bodyArea = BodyCanvas.selectedArea || '';
+            formData.positionX = BodyCanvas.position?.x || '';
+            formData.positionY = BodyCanvas.position?.y || '';
+            formData.scaleWidth = BodyCanvas.scale?.width || '';
+            formData.scaleHeight = BodyCanvas.scale?.height || '';
+        }
         
-        // Simulate System Processing
-        this.stepTitle.innerText = "PROCESSING // ASSESSING VALUE...";
-        this.steps.forEach(s => s.style.display = 'none');
-        this.form.querySelector('.form-progress').style.display = 'none';
+        // Count references
+        const referencesInput = this.form.querySelector('#references');
+        formData.referencesCount = referencesInput?.files?.length || 0;
         
-        setTimeout(() => {
-            this.showSuccess(project);
-            e.target.reset();
-            this.currentStep = 1;
-            this.updateUI();
-            this.form.querySelector('.form-progress').style.display = 'flex';
-        }, 1500);
+        // Get body photo name
+        const bodyPhotoInput = this.form.querySelector('#bodyPhoto');
+        formData.bodyPhotoName = bodyPhotoInput?.files?.[0]?.name || '';
+        
+        // Save to localStorage
+        this.saveToLocalStorage(formData);
+        
+        // Calculate intelligence
+        const intelligence = ProjectIntelligence.calculate(formData);
+        
+        console.log('Form submitted:', formData);
+        console.log('Intelligence scores:', intelligence);
+        
+        // Send to Google Apps Script if URL is configured
+        if (JX_CONFIG.system.googleScriptUrl) {
+            this.sendToGoogleSheet(formData);
+        } else {
+            console.warn('Google Script URL not configured. Data saved locally only.');
+            alert('Projeto enviado com sucesso! Entraremos em contato em até 48 horas.');
+            this.resetForm();
+        }
     },
     
-    getFormData(form) {
-        const formData = new FormData(form);
+    async sendToGoogleSheet(formData) {
+        try {
+            const response = await fetch(JX_CONFIG.system.googleScriptUrl, {
+                method: 'POST',
+                mode: 'no-cors', // Required for Google Apps Script
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            // Due to no-cors mode, we can't read the response, but we assume success if no error
+            console.log('Data sent to Google Sheet');
+            alert('Projeto enviado com sucesso! Entraremos em contato em até 48 horas.');
+            this.resetForm();
+            
+        } catch (error) {
+            console.error('Error sending to Google Sheet:', error);
+            // Fallback to local storage
+            alert('Projeto enviado com sucesso! (Salvo localmente)');
+            this.resetForm();
+        }
+    },
+    
+    resetForm() {
+        this.form.reset();
+        this.currentStep = 1;
+        this.updateUI();
+    },
+    
+    getFormData() {
+        const formData = new FormData(this.form);
         const data = {};
         formData.forEach((value, key) => {
             // Handle file uploads - convert to placeholder for Netlify Forms
