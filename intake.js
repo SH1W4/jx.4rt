@@ -441,15 +441,25 @@ const ProjectIntelligence = {
 // Backward compatibility alias
 const LeadIntelligence = ProjectIntelligence;
 
-// Form Handler & Stepper Logic
 const FormHandler = {
+    form: null,
+    steps: [],
+    stepTitle: null,
+    progressBars: [],
     currentStep: 1,
-    totalSteps: 4,
+    totalSteps: 11,
     titles: [
-        "01 // IDENTITY & CONTACT",
-        "02 // PROJECT DETAILS",
-        "03 // INTENTION",
-        "04 // LOGISTICS"
+        "01 // IDEA",
+        "02 // CANVAS",
+        "03 // LANGUAGE",
+        "04 // REFERENCES",
+        "05 // BODY PHOTO",
+        "06 // BUDGET",
+        "07 // DATE",
+        "08 // CONTACT",
+        "09 // HEALTH",
+        "10 // SOURCE",
+        "11 // REVIEW"
     ],
 
     init() {
@@ -526,6 +536,17 @@ const FormHandler = {
         if (!this.validateStep()) return;
         if (this.currentStep < this.totalSteps) {
             this.currentStep++;
+            
+            // Inject BodyCanvas when entering step 2
+            if (this.currentStep === 2) {
+                this.injectBodyCanvas();
+            }
+            
+            // Generate review summary when entering step 11
+            if (this.currentStep === 11) {
+                this.generateReviewSummary();
+            }
+            
             this.updateUI();
         }
     },
@@ -535,6 +556,55 @@ const FormHandler = {
             this.currentStep--;
             this.updateUI();
         }
+    },
+    
+    injectBodyCanvas() {
+        const container = document.getElementById('body-canvas-container');
+        if (container && !container.hasChildNodes()) {
+            // Load body-canvas.html content
+            fetch('body-canvas.html')
+                .then(response => response.text())
+                .then(html => {
+                    container.innerHTML = html;
+                    // Initialize BodyCanvas
+                    if (typeof BodyCanvas !== 'undefined') {
+                        BodyCanvas.init('body-canvas');
+                    }
+                })
+                .catch(err => console.error('Failed to load BodyCanvas:', err));
+        }
+    },
+    
+    generateReviewSummary() {
+        const summary = document.getElementById('review-summary');
+        if (!summary) return;
+        
+        const formData = this.getFormData();
+        
+        let html = '';
+        
+        if (formData.idea) {
+            html += `<p><strong>Idea:</strong> ${formData.idea}</p>`;
+        }
+        
+        if (BodyCanvas && BodyCanvas.selectedArea) {
+            html += `<p><strong>Body Area:</strong> ${BodyCanvas.selectedArea}</p>`;
+            html += `<p><strong>Scale:</strong> ≈ ${BodyCanvas.scale.width} × ${BodyCanvas.scale.height} CM</p>`;
+        }
+        
+        if (formData.language) {
+            html += `<p><strong>Language:</strong> ${formData.language}</p>`;
+        }
+        
+        if (formData.budget) {
+            html += `<p><strong>Budget:</strong> ${formData.budget}</p>`;
+        }
+        
+        if (formData.name) {
+            html += `<p><strong>Contact:</strong> ${formData.name} (${formData.email})</p>`;
+        }
+        
+        summary.innerHTML = html || '<p>No data to review</p>';
     },
 
     updateUI() {

@@ -552,6 +552,31 @@
             resize: vertical;
         }
 
+        .form-hint {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: var(--space-xs);
+            line-height: 1.4;
+        }
+
+        .review-summary {
+            background: var(--bg);
+            border: 1px solid var(--border-light);
+            padding: var(--space-md);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .review-summary p {
+            margin-bottom: var(--space-sm);
+        }
+
+        .review-summary strong {
+            color: var(--text-primary);
+        }
+
         /* Footer */
         .footer {
             background: var(--bg-deep);
@@ -641,6 +666,7 @@
     </style>
     <script src="config.js"></script>
     <script src="translations.js"></script>
+    <script src="body-canvas.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -814,8 +840,100 @@
             <p class="section-subtitle" data-i18n="intake-subheading">Conte-nos sobre seu projeto. Analisaremos e responderemos em 48 horas.</p>
         </div>
         <form id="intake-form" class="intake-form" name="project-intake" method="POST" data-netlify="true" enctype="multipart/form-data">
-            <!-- STEP 1: Identity & Contact -->
+            <!-- STEP 1: IDEA -->
             <div class="form-step active" data-step="1" style="display: contents;">
+                <div class="form-group form-full">
+                    <label class="form-label" for="idea" data-i18n="step1-idea-label">Descreva sua ideia livremente *</label>
+                    <textarea class="form-textarea" id="idea" name="idea" required placeholder="Conte sobre o que você imagina..." data-i18n-placeholder="step1-idea-placeholder"></textarea>
+                </div>
+                <div class="form-group form-full" style="margin-top: 1rem;">
+                    <button type="button" class="btn btn-primary btn-next" data-i18n="form-next">Próximo ></button>
+                </div>
+            </div>
+
+            <!-- STEP 2: CANVAS (BodyCanvas Integration) -->
+            <div class="form-step" data-step="2" style="display: none;">
+                <div class="form-group form-full">
+                    <label class="form-label" data-i18n="step2-canvas-label">Selecione a área do corpo</label>
+                    <!-- BodyCanvas Component will be injected here -->
+                    <div id="body-canvas-container"></div>
+                </div>
+                <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
+                    <button type="button" class="btn btn-prev" data-i18n="form-prev">< Anterior</button>
+                    <button type="button" class="btn btn-primary btn-next" data-i18n="form-next">Próximo ></button>
+                </div>
+            </div>
+
+            <!-- STEP 3: LANGUAGE -->
+            <div class="form-step" data-step="3" style="display: none;">
+                <div class="form-group form-full">
+                    <label class="form-label" for="language" data-i18n="step3-language-label">Linguagem *</label>
+                    <select class="form-select" id="language" name="language" required>
+                        <option value="">Selecione</option>
+                        <option value="blackwork" data-i18n="step3-language-blackwork">Blackwork</option>
+                        <option value="color" data-i18n="step3-language-color">Color</option>
+                        <option value="blackwork-color" data-i18n="step3-language-mixed">Blackwork / Color</option>
+                    </select>
+                </div>
+                <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
+                    <button type="button" class="btn btn-prev" data-i18n="form-prev">< Anterior</button>
+                    <button type="button" class="btn btn-primary btn-next" data-i18n="form-next">Próximo ></button>
+                </div>
+            </div>
+
+            <!-- STEP 4: REFERENCES -->
+            <div class="form-step" data-step="4" style="display: none;">
+                <div class="form-group form-full">
+                    <label class="form-label" for="references" data-i18n="step4-references-label">Referências visuais (opcional)</label>
+                    <input type="file" class="form-input" id="references" name="references" multiple accept="image/*">
+                    <p class="form-hint" data-i18n="step4-references-hint">Upload de imagens que inspiram sua ideia</p>
+                </div>
+                <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
+                    <button type="button" class="btn btn-prev" data-i18n="form-prev">< Anterior</button>
+                    <button type="button" class="btn btn-primary btn-next" data-i18n="form-next">Próximo ></button>
+                </div>
+            </div>
+
+            <!-- STEP 5: BODY PHOTO -->
+            <div class="form-step" data-step="5" style="display: none;">
+                <div class="form-group form-full">
+                    <label class="form-label" for="bodyPhoto" data-i18n="step5-photo-label">Foto da área do corpo *</label>
+                    <input type="file" class="form-input" id="bodyPhoto" name="bodyPhoto" accept="image/*" required>
+                    <p class="form-hint" data-i18n="step5-photo-hint">Foto real para análise anatômica</p>
+                </div>
+                <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
+                    <button type="button" class="btn btn-prev" data-i18n="form-prev">< Anterior</button>
+                    <button type="button" class="btn btn-primary btn-next" data-i18n="form-next">Próximo ></button>
+                </div>
+            </div>
+
+            <!-- STEP 6: BUDGET -->
+            <div class="form-step" data-step="6" style="display: none;">
+                <div class="form-group form-full">
+                    <label class="form-label" for="budget" data-i18n="step6-budget-label">Qual valor você imaginou investir? *</label>
+                    <input type="text" class="form-input" id="budget" name="budget" required placeholder="R$">
+                    <p class="form-hint" data-i18n="step6-budget-hint">Este valor nos ajuda a compreender o projeto e propor uma solução compatível. O orçamento final será definido após a análise.</p>
+                </div>
+                <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
+                    <button type="button" class="btn btn-prev" data-i18n="form-prev">< Anterior</button>
+                    <button type="button" class="btn btn-primary btn-next" data-i18n="form-next">Próximo ></button>
+                </div>
+            </div>
+
+            <!-- STEP 7: DATE -->
+            <div class="form-step" data-step="7" style="display: none;">
+                <div class="form-group form-full">
+                    <label class="form-label" for="preferredDate" data-i18n="step7-date-label">Data preferida</label>
+                    <input type="date" class="form-input" id="preferredDate" name="preferredDate">
+                </div>
+                <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
+                    <button type="button" class="btn btn-prev" data-i18n="form-prev">< Anterior</button>
+                    <button type="button" class="btn btn-primary btn-next" data-i18n="form-next">Próximo ></button>
+                </div>
+            </div>
+
+            <!-- STEP 8: CONTACT -->
+            <div class="form-step" data-step="8" style="display: none;">
                 <div class="form-group form-full">
                     <label class="form-label" for="name" data-i18n="form-name">Nome *</label>
                     <input type="text" class="form-input" id="name" name="name" required>
@@ -840,42 +958,14 @@
                     <label class="form-label" for="email" data-i18n="form-email">Email *</label>
                     <input type="email" class="form-input" id="email" name="email" required>
                 </div>
-                <div class="form-group form-full" style="margin-top: 1rem;">
+                <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
+                    <button type="button" class="btn btn-prev" data-i18n="form-prev">< Anterior</button>
                     <button type="button" class="btn btn-primary btn-next" data-i18n="form-next">Próximo ></button>
                 </div>
             </div>
 
-            <!-- STEP 2: Project Details -->
-            <div class="form-step" data-step="2" style="display: none;">
-                <div class="form-group form-full">
-                    <label class="form-label" for="projectDescription" data-i18n="form-description">Descreva sua ideia com máximo detalhe *</label>
-                    <textarea class="form-textarea" id="projectDescription" name="projectDescription" required></textarea>
-                </div>
-                <div class="form-group form-full">
-                    <label class="form-label" for="style" data-i18n="form-style">Estilo *</label>
-                    <select class="form-select" id="style" name="style" required>
-                        <option value="">Selecione</option>
-                        <option value="blackwork" data-i18n="form-style-blackwork">Blackwork</option>
-                        <option value="abstract" data-i18n="form-style-abstract">Abstrato</option>
-                        <option value="blackwork-abstract" data-i18n="form-style-blackwork-abstract">Blackwork / Abstrato</option>
-                    </select>
-                </div>
-                <div class="form-group form-full">
-                    <label class="form-label" for="references" data-i18n="form-references">Imagens de referência (opcional)</label>
-                    <input type="file" class="form-input" id="references" name="references" multiple accept="image/*">
-                </div>
-                <div class="form-group form-full">
-                    <label class="form-label" for="bodyAreaPhoto" data-i18n="form-body-photo">Foto da área do corpo *</label>
-                    <input type="file" class="form-input" id="bodyAreaPhoto" name="bodyAreaPhoto" accept="image/*" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="bodyArea" data-i18n="form-body-area">Área do corpo *</label>
-                    <input type="text" class="form-input" id="bodyArea" name="bodyArea" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="size" data-i18n="form-size">Tamanho aproximado *</label>
-                    <input type="text" class="form-input" id="size" name="size" required>
-                </div>
+            <!-- STEP 9: HEALTH -->
+            <div class="form-step" data-step="9" style="display: none;">
                 <div class="form-group form-full">
                     <label class="form-label" for="allergies" data-i18n="form-allergies">Você tem alguma alergia?</label>
                     <select class="form-select" id="allergies" name="allergies">
@@ -887,68 +977,18 @@
                     <label class="form-label" for="allergiesDescription" data-i18n="form-allergies-detail">Se sim, qual?</label>
                     <input type="text" class="form-input" id="allergiesDescription" name="allergiesDescription">
                 </div>
-                <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
-                    <button type="button" class="btn btn-prev" data-i18n="form-prev">< Anterior</button>
-                    <button type="button" class="btn btn-primary  btn-next" data-i18n="form-next">Próximo ></button>
-                </div>
-            </div>
-
-            <!-- STEP 3: Intention -->
-            <div class="form-step" data-step="3" style="display: none;">
                 <div class="form-group form-full">
-                    <label class="form-label" for="importance" data-i18n="form-importance">Por que esta peça é importante para você? *</label>
-                    <textarea class="form-textarea" id="importance" name="importance" required></textarea>
-                </div>
-                <div class="form-group form-full">
-                    <label class="form-label" for="meaning" data-i18n="form-meaning">O que esta tatuagem deve comunicar? *</label>
-                    <textarea class="form-textarea" id="meaning" name="meaning" required></textarea>
-                </div>
-                <div class="form-group form-full">
-                    <label class="form-label" for="authorship" data-i18n="form-authorship">Nível de autoria</label>
-                    <select class="form-select" id="authorship" name="authorship">
-                        <option value="">Selecione</option>
-                        <option value="reproduction" data-i18n="form-authorship-reproduction">Quero reproduzir minha referência</option>
-                        <option value="adaptations" data-i18n="form-authorship-adaptations">Aberto a adaptações</option>
-                        <option value="interpretation" data-i18n="form-authorship-interpretation">Quero interpretação artística</option>
-                        <option value="development" data-i18n="form-authorship-development">Desenvolver ideia juntos</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="timeline" data-i18n="form-timeline">Data preferida para tatuar</label>
-                    <input type="date" class="form-input" id="timeline" name="timeline">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="traveling" data-i18n="form-traveling">Viajando especificamente para este projeto?</label>
-                    <select class="form-select" id="traveling" name="traveling">
-                        <option value="">Selecione</option>
-                        <option value="yes" data-i18n="form-traveling-yes">Sim</option>
-                        <option value="no" data-i18n="form-traveling-no">Não</option>
-                    </select>
+                    <label class="form-label" for="healthNotes" data-i18n="step9-health-notes">Informações adicionais de saúde (opcional)</label>
+                    <textarea class="form-textarea" id="healthNotes" name="healthNotes"></textarea>
                 </div>
                 <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
                     <button type="button" class="btn btn-prev" data-i18n="form-prev">< Anterior</button>
-                    <button type="button" class="btn btn-primary  btn-next" data-i18n="form-next">Próximo ></button>
+                    <button type="button" class="btn btn-primary btn-next" data-i18n="form-next">Próximo ></button>
                 </div>
             </div>
 
-            <!-- STEP 4: Logistics -->
-            <div class="form-step" data-step="4" style="display: none;">
-                <div class="form-group form-full">
-                    <label class="form-label" for="investment" data-i18n="form-investment">Faixa de investimento *</label>
-                    <select class="form-select" id="investment" name="investment" required>
-                        <option value="">Selecione</option>
-                        <option value="1000-2000">R$1.000–2.000</option>
-                        <option value="2000-4000">R$2.000–4.000</option>
-                        <option value="4000-8000">R$4.000–8.000</option>
-                        <option value="8000-12000">R$8.000–12.000</option>
-                        <option value="12000+">R$12.000+</option>
-                        <option value="reference">Ainda não tenho referência</option>
-                    </select>
-                </div>
-                <div class="form-group form-full">
-                    <label class="form-label" for="whyJx4rt" data-i18n="form-why-jx4rt">Por que JX.4RT?</label>
-                    <textarea class="form-textarea" id="whyJx4rt" name="whyJx4rt"></textarea>
-                </div>
+            <!-- STEP 10: SOURCE -->
+            <div class="form-step" data-step="10" style="display: none;">
                 <div class="form-group form-full">
                     <label class="form-label" for="source" data-i18n="form-source">Como descobriu o JX.4RT? *</label>
                     <select class="form-select" id="source" name="source" required>
@@ -960,6 +1000,24 @@
                         <option value="returning" data-i18n="form-source-returning">Cliente anterior</option>
                         <option value="other" data-i18n="form-source-other">Outro</option>
                     </select>
+                </div>
+                <div class="form-group form-full">
+                    <label class="form-label" for="whyJx4rt" data-i18n="form-why-jx4rt">Por que JX.4RT?</label>
+                    <textarea class="form-textarea" id="whyJx4rt" name="whyJx4rt"></textarea>
+                </div>
+                <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
+                    <button type="button" class="btn btn-prev" data-i18n="form-prev">< Anterior</button>
+                    <button type="button" class="btn btn-primary btn-next" data-i18n="form-next">Próximo ></button>
+                </div>
+            </div>
+
+            <!-- STEP 11: REVIEW -->
+            <div class="form-step" data-step="11" style="display: none;">
+                <div class="form-group form-full">
+                    <label class="form-label" data-i18n="step11-review-label">Revisão do projeto</label>
+                    <div class="review-summary" id="review-summary">
+                        <!-- Summary will be populated by JS -->
+                    </div>
                 </div>
                 <div class="form-group form-full" style="margin-top: 1rem; display: flex; gap: 1rem;">
                     <button type="button" class="btn btn-prev" data-i18n="form-prev">< Anterior</button>

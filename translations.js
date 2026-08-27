@@ -74,10 +74,17 @@ const translations = {
         'intake-subheading': 'Conte-nos sobre seu projeto. Analisaremos e responderemos em 48 horas.',
         
         // Form Steps
-        'step-1-title': '01 // IDENTIDADE & CONTATO',
-        'step-2-title': '02 // DETALHES DO PROJETO',
-        'step-3-title': '03 // INTENÇÃO',
-        'step-4-title': '04 // LOGÍSTICA',
+        'step-1-title': '01 // IDEA',
+        'step-2-title': '02 // CANVAS',
+        'step-3-title': '03 // LINGUAGEM',
+        'step-4-title': '04 // REFERÊNCIAS',
+        'step-5-title': '05 // FOTO DO CORPO',
+        'step-6-title': '06 // ORÇAMENTO',
+        'step-7-title': '07 // DATA',
+        'step-8-title': '08 // CONTATO',
+        'step-9-title': '09 // SAÚDE',
+        'step-10-title': '10 // ORIGEM',
+        'step-11-title': '11 // REVISÃO',
         
         // Form Fields
         'form-name': 'Nome *',
@@ -122,6 +129,24 @@ const translations = {
         'form-next': 'Próximo >',
         'form-prev': '< Anterior',
         'form-submit': 'Enviar Projeto',
+        
+        // New Step Fields
+        'step1-idea-label': 'Descreva sua ideia livremente *',
+        'step1-idea-placeholder': 'Conte sobre o que você imagina...',
+        'step2-canvas-label': 'Selecione a área do corpo',
+        'step3-language-label': 'Linguagem *',
+        'step3-language-blackwork': 'Blackwork',
+        'step3-language-color': 'Color',
+        'step3-language-mixed': 'Blackwork / Color',
+        'step4-references-label': 'Referências visuais (opcional)',
+        'step4-references-hint': 'Upload de imagens que inspiram sua ideia',
+        'step5-photo-label': 'Foto da área do corpo *',
+        'step5-photo-hint': 'Foto real para análise anatômica',
+        'step6-budget-label': 'Qual valor você imaginou investir? *',
+        'step6-budget-hint': 'Este valor nos ajuda a compreender o projeto e propor uma solução compatível. O orçamento final será definido após a análise.',
+        'step7-date-label': 'Data preferida',
+        'step9-health-notes': 'Informações adicionais de saúde (opcional)',
+        'step11-review-label': 'Revisão do projeto',
         
         // Footer
         'footer-jx4rt': 'JX.4RT',
@@ -244,10 +269,17 @@ const translations = {
         'intake-subheading': 'Tell us about your project. We\'ll review and respond within 48 hours.',
         
         // Form Steps
-        'step-1-title': '01 // IDENTITY & CONTACT',
-        'step-2-title': '02 // PROJECT DETAILS',
-        'step-3-title': '03 // INTENTION',
-        'step-4-title': '04 // LOGISTICS',
+        'step-1-title': '01 // IDEA',
+        'step-2-title': '02 // CANVAS',
+        'step-3-title': '03 // LANGUAGE',
+        'step-4-title': '04 // REFERENCES',
+        'step-5-title': '05 // BODY PHOTO',
+        'step-6-title': '06 // BUDGET',
+        'step-7-title': '07 // DATE',
+        'step-8-title': '08 // CONTACT',
+        'step-9-title': '09 // HEALTH',
+        'step-10-title': '10 // SOURCE',
+        'step-11-title': '11 // REVIEW',
         
         // Form Fields
         'form-name': 'Name *',
@@ -292,6 +324,24 @@ const translations = {
         'form-next': 'Next Step >',
         'form-prev': '< Prev',
         'form-submit': 'Submit Project',
+        
+        // New Step Fields
+        'step1-idea-label': 'Describe your idea freely *',
+        'step1-idea-placeholder': 'Tell us about what you imagine...',
+        'step2-canvas-label': 'Select body area',
+        'step3-language-label': 'Language *',
+        'step3-language-blackwork': 'Blackwork',
+        'step3-language-color': 'Color',
+        'step3-language-mixed': 'Blackwork / Color',
+        'step4-references-label': 'Visual references (optional)',
+        'step4-references-hint': 'Upload images that inspire your idea',
+        'step5-photo-label': 'Photo of body area *',
+        'step5-photo-hint': 'Real photo for anatomical analysis',
+        'step6-budget-label': 'What value did you imagine investing? *',
+        'step6-budget-hint': 'This value helps us understand the project and propose a compatible solution. The final budget will be defined after analysis.',
+        'step7-date-label': 'Preferred date',
+        'step9-health-notes': 'Additional health information (optional)',
+        'step11-review-label': 'Project review',
         
         // Footer
         'footer-jx4rt': 'JX.4RT',
