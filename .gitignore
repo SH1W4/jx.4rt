@@ -3,9 +3,6 @@
 # Private brain (strategic information)
 .jx-brain/
 
-# Admin panel (development only)
-admin.html
-
 # Backup files
 *.backup
 *.bak

@@ -1,0 +1,14 @@
+{
+  "name": "jx4rt-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "JX.4RT static site + Netlify Functions (Jev lead classification)",
+  "dependencies": {
+    "@netlify/database": "^2.0.1",
+    "@typesafe-ai/sdk": "^0.6.0",
+    "drizzle-orm": "beta"
+  },
+  "devDependencies": {
+    "drizzle-kit": "beta"
+  }
+}
