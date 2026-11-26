@@ -116,4 +116,15 @@ Assess potential for:
 
 ---
 
+## CLIENT LOG
+
+### Cliente #41 — Marco do Retorno
+- **Data**: 2026-11-26
+- **Status**: ORÇAMENTO FECHADO (primeiro orçamento fechado via intake integrado ao Google Forms)
+- **Marco**: Marca o retorno — primeiro projeto confirmado da nova fase
+- **Canal**: Site JX.4RT → Project Intake → Google Forms / Sheets
+- **Detalhes do projeto**: a completar (manter dados pessoais fora deste repositório público)
+
+---
+
 **End of JX.4RT Clients v1.0.0**

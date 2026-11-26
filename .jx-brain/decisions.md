@@ -6,6 +6,21 @@
 
 ---
 
+## 2026-11-26 - Marco do Retorno: Cliente #41
+
+**Event**: Primeiro orçamento fechado (cliente #41) com o intake do site integrado ao Google Forms.
+
+**Meaning**:
+- Marca o retorno da atividade
+- Valida o fluxo site → formulário → orçamento fechado
+- Início da Phase 2 (Commercial Validation)
+
+**Next**:
+- Registrar origem do cliente e resposta a "Why JX.4RT?"
+- Acompanhar execução do projeto e potencial de recorrência/indicação
+
+---
+
 ## 2024-08-12 - Thesis Transformation
 
 **Decision**: Transform from "Portfolio + Commercial Intelligence" to "Private Artist Operating System"
