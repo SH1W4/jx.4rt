@@ -117,8 +117,8 @@
 ## CLIENTS STATUS
 
 ### Total Clients
-- **Count**: TBD
-- **Notes**: Need to populate with actual client data
+- **Count**: 41 (último registrado: cliente #41)
+- **Notes**: Cliente #41 fechou o primeiro orçamento em 2026-11-26 — marco do retorno
 
 ### Returning Clients
 - **Count**: TBD
@@ -171,8 +171,9 @@
 - **Remaining**: Full scoring refactoring, project tracking, opportunity tracking
 
 ### Phase 2: Commercial Validation
-- **Status**: NOT STARTED
-- **Progress**: 0%
+- **Status**: STARTED
+- **Progress**: first closed quote
+- **Milestone**: 2026-11-26 — primeiro orçamento fechado (cliente #41), marco do retorno
 
 ### Phase 3: Artistic Asset Development
 - **Status**: NOT STARTED
